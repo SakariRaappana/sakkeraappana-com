@@ -5,7 +5,7 @@ vuosi: 2026
 kesto: "useita päiviä"
 km: 50
 tiivistelma: "Vesitasolentokone jätti minut yksin keskelle Vätsärin erämaata. Minun oli löydettävä pois ilman karttaa, kompassia, ruokaa, telttaa tai makuupussia."
-kuva: "/kuvat/seikkailut/eramaan-armoilla/kuvat/EA_06_kavely.png"
+kuva: "/kuvat/seikkailut/eramaan-armoilla/kuvat/EA_06_kavely.jpg"
 omavaraisuus: "Täysi omavaraisuus"
 osallistujat: ["Sakke Raappana"]
 featured: true
