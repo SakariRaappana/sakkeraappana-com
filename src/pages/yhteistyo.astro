@@ -3,115 +3,171 @@ import Base from '@/layouts/Base.astro';
 
 const useCases = [
   {
+    numero: '01',
+    otsikko: 'Brändi- ja sisältöyhteistyöt',
+    kuvaus: [
+      'Pitkäjänteisiä yhteistyöprojekteja, joissa brändi liittyy luontevasti osaksi seikkailua ja sen tarinaa.',
+      'Yhteistyö voi sisältää esimerkiksi tuotteen käyttöä ja testaamista vaativissa olosuhteissa, dokumentaarista video- ja valokuvamateriaalia, sosiaalisen median sisältöjä, tuotekehitysyhteistyötä sekä näkyvyyttä elokuvissa ja tapahtumissa.',
+      'Kumppanuuden ei tarvitse rajoittua retkeily- tai varustebrändeihin. Seikkailut tarjoavat kiinnostavan ympäristön myös teknologialle, liikenteelle, ravitsemukselle, rahoitukselle, vakuuttamiselle ja muille aloille, joiden arvoihin kuuluvat valmistautuminen, toimintakyky ja rohkeus edetä.',
+    ],
+  },
+  {
+    numero: '02',
     otsikko: 'Dokumentti- ja televisiotuotannot',
-    kuvaus: 'Yhteistuotannot, asiantuntijarooli tai täysi sisällöntuotanto arktisiin ympäristöihin. Kokemusta kuvauksesta, ohjauksesta ja editoinnista.',
+    kuvaus: [
+      'Toimin tuotannoissa seikkailijana, esiintyjänä, erä- ja selviytymistaitojen asiantuntijana sekä kuvaavana tarinankertojana.',
+      'Minulla on kokemusta pitkäkestoisten seikkailujen suunnittelusta ja dokumentoinnista olosuhteissa, joissa kuvaaminen on sovitettava turvallisuuden, sään ja fyysisen kuormituksen ehdoille.',
+      'Yhteistyö voi olla valmis ohjelmaidea, yhteistuotanto, asiantuntijarooli tai osuus laajemmassa televisio- tai dokumenttituotannossa.',
+    ],
   },
   {
-    otsikko: 'Brändi- ja tuoteyhteistyöt',
-    kuvaus: 'Varuste- ja ulkoilubrändit, joille aito arktinen ympäristö on oleellinen. Ei näyteltyä, ei studiotuotantoa.',
-  },
-  {
-    otsikko: 'Tapahtumat ja puheenvuorot',
-    kuvaus: 'Luennot arktisista retkikunnista, selviytymisestä, projektisuunnittelusta ja ääriolosuhteissa toimimisesta.',
-  },
-  {
-    otsikko: 'Haastattelut ja media',
-    kuvaus: 'Toimittajille ja medialle: haastattelupyynnöt ja kuva-aineistot saatavilla.',
-  },
-  {
+    numero: '03',
     otsikko: 'Seikkailu- ja retkikuntaprojektit',
-    kuvaus: 'Mukaan ottaminen suunniteltuihin retkikuntiin tai yhteishankkeet uusille alueille.',
+    kuvaus: [
+      'Suunnittelen ja johdan pitkäkestoisia retkikuntia pohjoisissa ja syrjäisissä ympäristöissä.',
+      'Voin rakentaa uuden seikkailukonseptin yhdessä tuotantoyhtiön tai kumppanibrändin kanssa tai liittää yhteistyön osaksi jo suunnitteilla olevaa retkikuntaa.',
+      'Hankkeisiin voi sisältyä reittitutkimusta, ryhmän kokoamista, logistiikkaa, turvallisuussuunnittelua, harjoittelua, kuvaamista ja monikanavaista julkaisua.',
+    ],
   },
   {
+    numero: '04',
     otsikko: 'Kuva- ja videotuotannot',
-    kuvaus: 'Pohjoisissa tai vaativissa ympäristöissä tehtävät kuvaukset. Oma kalusto ja kokemus ääriolosuhteista.',
+    kuvaus: [
+      'Dokumentaarista valokuva- ja videosisältöä luonnossa, erämaassa ja vaativissa olosuhteissa.',
+      'Tuotanto voidaan toteuttaa osana todellista seikkailua tai erillisenä kuvausprojektina. Teen tarvittaessa yhteistyötä muiden kuvaajien, elokuva-alan ammattilaisten, säveltäjien ja jälkituotantotiimien kanssa.',
+      'Tavoitteena on materiaali, joka näyttää aidolta, koska se on syntynyt oikeassa ympäristössä.',
+    ],
+  },
+  {
+    numero: '05',
+    otsikko: 'Media ja haastattelut',
+    kuvaus: [
+      'Olen käytettävissä haastatteluihin, asiantuntijakommentteihin ja mediaesiintymisiin, jotka liittyvät erämaihin, retkikuntiin, selviytymiseen, arktiseen retkeilyyn ja seikkailuelokuvien tekemiseen.',
+      'Julkaisukelpoista valokuva- ja videomateriaalia voidaan toimittaa sovitun käyttötarkoituksen mukaan.',
+    ],
+  },
+];
+
+const phases = [
+  {
+    vaihe: 'Ennen retkeä',
+    kuvaus: 'Valmistautuminen, harjoittelu, varustevalinnat ja projektin rakentaminen.',
+  },
+  {
+    vaihe: 'Retken aikana',
+    kuvaus: 'Aito käyttö, dokumentaariset tilanteet ja sisältö vaativista olosuhteista.',
+  },
+  {
+    vaihe: 'Retken jälkeen',
+    kuvaus: 'Elokuva, valokuvat, sosiaalisen median julkaisut, haastattelut ja tapahtumat.',
   },
 ];
 ---
 
 <Base
   title="Yhteistyö — Sakke Raappana"
-  description="Yhteistyömahdollisuudet: tuotannot, brändit, tapahtumat, haastattelut ja retkikuntaprojektit."
+  description="Yhteistyötä Sakke Raappanan kanssa: dokumentti- ja televisiotuotannot, brändikumppanuudet, seikkailuprojektit, puheenvuorot sekä kuva- ja videosisällöt."
   theme="light"
 >
   <!-- HERO -->
   <div class="page-hero">
     <div class="container">
       <p class="t-label" style="margin-bottom: 1.5rem;">Yhteistyö</p>
-      <h1 class="t-display">Tehdään<br /><em>yhteistyötä.</em></h1>
-      <p class="page-hero-sub t-body">
-        Tuotannoille, brändeille, medialle ja tapahtumajärjestäjille.
-      </p>
+      <h1 class="t-display">Seikkailuja. Tarinoita.<br /><em>Yhteistyötä, jolla on<br />todellinen ympäristö.</em></h1>
+      <div class="page-hero-sub">
+        <p class="t-body">
+          Teen yhteistyötä brändien, tuotantoyhtiöiden, medioiden ja tapahtumajärjestäjien kanssa. Rakennan sisältöjä ja hankkeita, joissa tuotteet, ihmiset ja tarinat ovat osa aitoa seikkailua – eivät irrallinen mainoskatko sen keskellä.
+        </p>
+        <p class="t-body" style="margin-top: 1.25rem;">
+          Parhaat yhteistyöt alkavat jo ennen lähtöä. Ne kulkevat mukana valmistautumisessa, varsinaisella retkellä ja myöhemmin syntyvissä elokuvissa, valokuvissa, sosiaalisen median sisällöissä ja tapahtumissa.
+        </p>
+      </div>
     </div>
   </div>
 
   <div class="container">
+
     <!-- KÄYTTÖTAPAUKSET -->
     <section class="section" aria-labelledby="usecases-heading">
       <div class="section-label">
-        <span class="t-label" id="usecases-heading">Mitä tehdään yhdessä</span>
+        <span class="t-label" id="usecases-heading">Mitä voimme tehdä yhdessä?</span>
       </div>
-      <div class="usecases-grid">
-        {useCases.map((item, i) => (
+      <div class="usecases-list">
+        {useCases.map((item) => (
           <div class="usecase-item">
-            <span class="usecase-number t-label">0{i + 1}</span>
-            <h2 class="usecase-title">{item.otsikko}</h2>
-            <p class="t-body-sm" style="margin-top: 0.75rem;">{item.kuvaus}</p>
+            <div class="usecase-header">
+              <span class="usecase-number t-label">{item.numero}</span>
+              <h2 class="usecase-title">{item.otsikko}</h2>
+            </div>
+            <div class="usecase-body">
+              {item.kuvaus.map((p) => (
+                <p class="t-body-sm">{p}</p>
+              ))}
+            </div>
           </div>
         ))}
       </div>
     </section>
 
+    <!-- SISÄLTÖKAARI -->
+    <section class="section content-arc-section" aria-labelledby="arc-heading" style="border-top: 1px solid var(--color-border);">
+      <div class="section-label">
+        <span class="t-label" id="arc-heading">Mitä yhteistyö voi tuottaa?</span>
+      </div>
+      <p class="arc-intro t-body" style="color: var(--color-muted); max-width: 52rem; margin-bottom: var(--space-12);">
+        Yksi seikkailu voi muodostaa pitkän sisältökaaren:
+      </p>
+      <div class="arc-phases">
+        {phases.map((phase) => (
+          <div class="arc-phase">
+            <p class="arc-phase-label t-label">{phase.vaihe}</p>
+            <p class="t-body-sm">{phase.kuvaus}</p>
+          </div>
+        ))}
+      </div>
+      <p class="arc-footer t-body-sm" style="color: var(--color-muted); max-width: 52rem; margin-top: var(--space-12);">
+        Kokonaisuus voidaan suunnitella kumppanin tavoitteiden mukaan. Yhteistyön sisältö, julkaisukanavat, käyttöoikeudet ja näkyvyys sovitaan aina selkeästi etukäteen.
+      </p>
+    </section>
+
+    <!-- FILOSOFIA -->
+    <section class="section philosophy-section" aria-labelledby="philosophy-heading" style="border-top: 1px solid var(--color-border);">
+      <div class="philosophy-grid">
+        <div class="philosophy-heading-col">
+          <h2 class="t-heading-2" id="philosophy-heading">
+            Aitoa käyttöä, ei päälle liimattua näkyvyyttä.
+          </h2>
+        </div>
+        <div class="philosophy-body-col">
+          <p class="t-body">
+            En ota retkille mukaan tuotteita vain siksi, että ne näkyisivät kamerassa. Kumppanin täytyy sopia hankkeen luonteeseen, ja tuotteen on kestettävä myös todellinen käyttö.
+          </p>
+          <p class="t-body" style="margin-top: 1.25rem;">
+            Tämä tekee yhteistyöstä uskottavaa. Kun varuste, palvelu tai brändi ratkaisee oikean ongelman, sen roolia ei tarvitse näytellä katsojalle.
+          </p>
+          <p class="t-body" style="margin-top: 1.25rem;">
+            Esimerkiksi Arktinen taival -retkikuntaprojektissa yhteistyö <strong>Svala of Finlandin</strong> ja <strong>Poppamiehen</strong> kanssa alkoi jo valmistautumisen aikana. Kumppanit ovat olleet mukana harjoittelussa, tuotteiden käytössä, resepti- ja videosisällöissä sekä Huippuvuorten varsinaisella retkellä. Tarina jatkuu elokuvassa ja sen teatteriensi-illassa.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- YHTEYDENOTTO -->
     <section class="section contact-section" aria-labelledby="contact-heading" style="border-top: 1px solid var(--color-border);">
-      <div class="contact-grid">
-        <div class="contact-intro">
-          <div class="section-label" style="margin-bottom: 2rem;">
-            <span class="t-label" id="contact-heading">Ota yhteyttä</span>
-          </div>
-          <h2 class="t-heading-2" style="margin-bottom: 1.5rem;">
-            Kerro projektista.
-          </h2>
-          <p class="t-body" style="color: var(--color-muted);">
-            Lyhyt viesti riittää. Vastaan yleensä muutaman päivän sisällä.
-          </p>
-          <div class="contact-direct" style="margin-top: 2rem;">
-            <p class="t-label" style="margin-bottom: 0.75rem;">Suoraan sähköpostilla</p>
-            <a href="mailto:sakke@sakkeraappana.com" class="contact-email">
-              sakke@sakkeraappana.com
-            </a>
-          </div>
-        </div>
-
-        <form class="contact-form" name="contact" method="POST" data-netlify="true" action="/kiitos">
-          <div class="form-group">
-            <label for="nimi" class="form-label">Nimi</label>
-            <input type="text" id="nimi" name="nimi" class="form-input" required autocomplete="name" />
-          </div>
-          <div class="form-group">
-            <label for="email" class="form-label">Sähköposti</label>
-            <input type="email" id="email" name="email" class="form-input" required autocomplete="email" />
-          </div>
-          <div class="form-group">
-            <label for="aihe" class="form-label">Aihe</label>
-            <select id="aihe" name="aihe" class="form-input form-select">
-              <option value="">Valitse...</option>
-              <option value="tuotanto">Dokumentti- tai televisiotuotanto</option>
-              <option value="brandi">Brändiyhteistyö</option>
-              <option value="tapahtuma">Tapahtuma tai puheenvuoro</option>
-              <option value="media">Haastattelu tai media</option>
-              <option value="retkikunta">Retkikuntaprojekti</option>
-              <option value="muu">Muu</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="viesti" class="form-label">Viesti</label>
-            <textarea id="viesti" name="viesti" class="form-input form-textarea" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-            Lähetä viesti
-          </button>
-        </form>
+      <div class="section-label" style="margin-bottom: 2rem;">
+        <span class="t-label" id="contact-heading">Ota yhteyttä</span>
+      </div>
+      <h2 class="t-heading-2" style="margin-bottom: 1.5rem;">
+        Kerro projektista.
+      </h2>
+      <p class="t-body" style="color: var(--color-muted); max-width: 52rem;">
+        Kerro lyhyesti tavoitteesta, aikataulusta ja siitä, millaista yhteistyötä olet ajatellut. Rakennetaan kokonaisuus, jossa seikkailu, tarina ja kumppanin tavoitteet tukevat toisiaan.
+      </p>
+      <div style="margin-top: 2rem;">
+        <p class="t-label" style="margin-bottom: 0.75rem;">Sähköpostilla</p>
+        <a href="mailto:sakke.raappana@gmail.com" class="contact-email">
+          sakke.raappana@gmail.com
+        </a>
       </div>
     </section>
   </div>
@@ -125,45 +181,82 @@ const useCases = [
 }
 
 .page-hero-sub {
-  max-width: 480px;
-  margin-top: var(--space-6);
+  max-width: 600px;
+  margin-top: var(--space-8);
 }
 
-.usecases-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+/* Use cases — stacked list layout */
+.usecases-list {
+  display: flex;
+  flex-direction: column;
   gap: 1px;
   background: var(--color-border);
 }
 
 .usecase-item {
   background: var(--color-bg);
-  padding: var(--space-8);
+  padding: var(--space-8) 0;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.usecase-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: 0.15em;
 }
 
 .usecase-number {
-  display: block;
-  margin-bottom: var(--space-4);
   color: var(--color-glacier);
 }
 
 .usecase-title {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--color-text);
 }
 
-/* Contact */
-.contact-grid {
+.usecase-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+/* Content arc */
+.arc-phases {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-24);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+}
+
+.arc-phase {
+  background: var(--color-bg);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.arc-phase-label {
+  color: var(--color-glacier);
+}
+
+/* Philosophy */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-12);
   align-items: start;
 }
 
+/* Contact */
 .contact-email {
   font-family: var(--font-body);
   font-size: 1.4rem;
@@ -176,77 +269,32 @@ const useCases = [
   color: var(--color-glacier);
 }
 
-/* Form */
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.form-label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
-
-.form-input {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  padding: var(--space-3) var(--space-4);
-  font-family: var(--font-body);
-  font-size: 1.0625rem;
-  outline: none;
-  transition: border-color 0.2s;
-  border-radius: 0;
-  -webkit-appearance: none;
-}
-
-.form-input:focus {
-  border-color: var(--color-glacier);
-}
-
-.form-select {
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8680' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  padding-right: 2.5rem;
-}
-
-.form-select option {
-  background: var(--color-surface);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 120px;
-  line-height: 1.6;
-}
 
 @media (max-width: 1024px) {
-  .usecases-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .usecase-item {
+    grid-template-columns: 220px 1fr;
+    gap: var(--space-8);
+  }
+
+  .philosophy-grid {
+    grid-template-columns: 220px 1fr;
+    gap: var(--space-8);
   }
 }
 
 @media (max-width: 768px) {
-  .contact-grid {
+  .usecase-item {
     grid-template-columns: 1fr;
-    gap: var(--space-12);
+    gap: var(--space-4);
   }
 
-  .usecases-grid {
+  .arc-phases {
     grid-template-columns: 1fr;
+  }
+
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
   }
 }
 </style>

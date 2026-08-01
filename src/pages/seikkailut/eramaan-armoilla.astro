@@ -89,7 +89,7 @@ const IMG = '/kuvat/seikkailut/eramaan-armoilla/kuvat';
   <!-- ===== FULL-BLEED 1 ===== -->
   <figure class="full-bleed">
     <img src={`${IMG}/EA_08_ilmakuva.png`} alt="Ilmakuva Vätsärin erämaasta — järviä ja metsää silmänkantamattomiin" />
-    <figcaption>Vätsäri — Suomen laajin erämaa-alue</figcaption>
+    <figcaption>Vätsäri — yksi Suomen laajimmista erämaa-alueista</figcaption>
   </figure>
 
   <!-- ===== LUKU 02 ===== -->
@@ -139,7 +139,6 @@ const IMG = '/kuvat/seikkailut/eramaan-armoilla/kuvat';
       <p>Vaikeinta oli säilyttää toimintakyky ja tehdä järkeviä päätöksiä silloinkin, kun varmuutta oikeasta suunnasta ei ollut. Keho sopeutuu, mutta mieli vaatii jatkuvaa työtä — epäilys on vaarallisin este eteenpäin liikkumiselle.</p>
       <blockquote class="pull-quote">Erämaa ei vastusta — se on vain välinpitämätön. Se ei halua sinua hengiltä eikä auta sinua selviytymään. Se on vain siellä, ja sinä olet siellä myös.</blockquote>
       <div class="ch03-images">
-        <img src={`${IMG}/EA_03_reppu.jpg`} alt="Sakke täydessä varustuksessa" />
         <img src={`${IMG}/EA_02_mela.jpg`} alt="Sakke Vätsärin vesistöllä" />
       </div>
     </div>
@@ -511,15 +510,13 @@ const IMG = '/kuvat/seikkailut/eramaan-armoilla/kuvat';
 }
 
 .ch03-images {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-3);
   margin-top: var(--space-6);
+  max-width: 36rem;
 }
 
 .ch03-images img {
   width: 100%;
-  aspect-ratio: 3/2;
+  aspect-ratio: 4/5;
   object-fit: cover;
 }
 

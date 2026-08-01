@@ -175,24 +175,40 @@ const heroAnimCSS = N > 1 ? `
     <div class="container">
       <div class="about-grid">
         <div class="about-image">
-          <div class="about-image-placeholder img-placeholder" aria-hidden="true"></div>
+          <img
+            src="/kuvat/sakke/sakke_raappana_Sarek.webp"
+            alt="Sakke Raappana Sarekissa"
+            class="about-portrait"
+            loading="lazy"
+          />
         </div>
         <div class="about-text">
-          <p class="t-label" style="margin-bottom: var(--space-6);">Sakke</p>
+          <p class="t-label" style="margin-bottom: var(--space-6);">Sakke Raappana</p>
           <h2 class="t-heading-1" id="about-heading" style="margin-bottom: var(--space-8);">
-            Retkiltä ei vain palata.<br />
-            <em>Niistä tehdään elokuvia.</em>
+            Seikkailija.<br />
+            Retkikunnanjohtaja.<br />
+            <em>Elokuvantekijä.</em>
           </h2>
           <p class="t-body" style="margin-bottom: var(--space-6);">
-            Olen suomalainen seikkailija, eränkävijä ja dokumentaarinen sisällöntuottaja.
-            Haen Pohjolan äärimmäisistä ympäristöistä — arktisista retkikunnista
-            selviytymisprojekteihin.
+            Olen melonut kanootilla Kalmankaltiosta Jäämerelle, johtanut
+            retkikunnan Huippuvuorten jäätiköille ja selvinnyt viikon ilman
+            mukana kannettua ruokaa. Kamera kulkee mukana alusta asti — ei
+            sivustakatsojana, vaan osana hanketta.
           </p>
-          <p class="t-body" style="margin-bottom: var(--space-10);">
-            Erätaidot, suunnitelmallisuus ja tarinankerronta yhdistyvät jokaisessa
-            projektissa. Retket eivät ole pelkkiä suorituksia — ne ovat elokuvia
-            odottamassa syntymistään.
-          </p>
+          <dl class="about-stats">
+            <div class="about-stat">
+              <dt class="about-stat-value">426 KM</dt>
+              <dd class="about-stat-label">Kanootilla Jäämerelle</dd>
+            </div>
+            <div class="about-stat">
+              <dt class="about-stat-value">17 VRK</dt>
+              <dd class="about-stat-label">Huippuvuorten jäätiköillä</dd>
+            </div>
+            <div class="about-stat">
+              <dt class="about-stat-value">7 VRK</dt>
+              <dd class="about-stat-label">Erämaassa ilman ruokaa</dd>
+            </div>
+          </dl>
           <a href="/sakke" class="btn btn-ghost">Lue lisää</a>
         </div>
       </div>
@@ -350,9 +366,41 @@ const heroAnimCSS = N > 1 ? `
   align-items: center;
 }
 
-.about-image-placeholder {
+.about-portrait {
   width: 100%;
   aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+  margin-bottom: var(--space-10);
+}
+
+.about-stat {
+  background: var(--color-surface);
+  padding: var(--space-5) var(--space-4);
+}
+
+.about-stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-glacier);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-1);
+}
+
+.about-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* Collab */

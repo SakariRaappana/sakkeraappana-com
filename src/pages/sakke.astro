@@ -12,14 +12,14 @@ import Base from '@/layouts/Base.astro';
     <div class="container">
       <div class="sakke-hero-grid">
         <div class="sakke-hero-image">
-          <div class="sakke-hero-placeholder img-placeholder" aria-hidden="true"></div>
+          <img src="/kuvat/sakke/sakke_raappana_Sarek.webp" alt="Sakke Raappana Sarekissa" class="sakke-hero-img" />
         </div>
         <div class="sakke-hero-intro">
           <p class="t-label" style="margin-bottom: 1.5rem;">Sakke Raappana</p>
           <h1 class="t-heading-1">
             Seikkailija.<br />
-            Elokuvantekijä.<br />
-            <em>Pohjoinen.</em>
+            Retkikunnanjohtaja.<br />
+            Elokuvantekijä.
           </h1>
         </div>
       </div>
@@ -31,51 +31,105 @@ import Base from '@/layouts/Base.astro';
     <div class="bio-section section">
       <div class="bio-text">
         <p class="t-body">
-          Olen suomalainen seikkailija, eränkävijä ja dokumentaarinen sisällöntuottaja.
-          Kotini on Pohjoinen — se on sekä maantieteellinen tosiasia että ajattelutapa.
-          Haen ympäristöjä, jotka vaativat enemmän kuin mukavuusalue antaa.
+          Olen suomalainen seikkailija, eränkävijä ja dokumentaarinen elokuvantekijä.
+          Rakennan hankkeita, joissa pitkä erämaamatka, vaativat olosuhteet ja vahva tarina yhdistyvät.
         </p>
         <p class="t-body" style="margin-top: 1.5rem;">
-          Ensimmäiset pitkät erämaaretket tein nuorena Lapissa. Ne opettivat jotain
-          sellaista, mitä ei voi lukea kirjoista: miten selviytyy epävarmuudessa,
-          miten rakennetaan suunnitelma joka pettää, ja miten siitä silti jatketaan.
-          Siitä lähtien retket ovat kasvaneet — Norjan Finnmarkista Huippuvuorille,
-          arktiselta rannikolta sisämaan erämaahan.
+          Olen melonut kanootilla Kalmankaltiosta Jäämerelle, vaeltanut viikon ilman mukana
+          kannettua ruokaa erämaassa ja johtanut kuusihenkisen retkikunnan Huippuvuorten
+          jäätiköille. Eränkävijät-sarjaa varten minut jätettiin vesitasolentokoneella
+          keskelle Vätsärin erämaata ilman karttaa, kompassia, ruokaa, telttaa tai makuupussia.
         </p>
         <p class="t-body" style="margin-top: 1.5rem;">
-          Kamera on tullut mukaan alusta alkaen. Koska retkellä näkee asioita, joita
-          haluaa myöhemmin muistella — mutta myös siksi, että tarina ansaitsee tulla
-          kerrotuksi kunnolla. Dokumentaarinen elokuva ei ole somevideo, se on
-          kärsivällisyyttä: kuvataan oikea valo, oikea hetki, oikea tunnelma.
-        </p>
-        <p class="t-body" style="margin-top: 1.5rem;">
-          Taustaltani olen teknologian parissa toiminut ihminen — datan ja
-          järjestelmien maailma ei ole vieras. Se näkyy tavassa suunnitella retkiä:
-          huolellinen valmistelu, riskianalyysi, varautuminen. Mutta kun ollaan
-          erämaassa, se kaikki haihtuu ja jäljelle jää vain se, mitä todella tietää.
+          Seikkailut alkavat usein vuosia ennen ensimmäistä askelta. Etsin reittejä, kokoan
+          retkikuntia ja rakennan suunnitelmia, joissa logistiikka, turvallisuus, kuvaaminen
+          ja varautuminen muodostavat yhden kokonaisuuden. Huolellinen valmistautuminen ei
+          poista epävarmuutta, mutta se antaa mahdollisuuden toimia järkevästi silloin, kun
+          suunnitelma ei enää pidä.
         </p>
       </div>
 
       <aside class="bio-stats">
         <div class="bio-stat-group">
-          <p class="t-label" style="margin-bottom: 1rem;">Luvuissa</p>
+          <p class="t-label">Luvuissa</p>
           <dl class="bio-stat-list">
             <div class="bio-stat-item">
-              <dt class="bio-stat-number">340+</dt>
-              <dd class="t-body-sm">Arktisia kilometrejä viimeisimmällä retkellä</dd>
+              <dt class="bio-stat-number">426 KM</dt>
+              <dd class="t-body-sm">Kanootilla Kalmankaltiosta Jäämerelle</dd>
             </div>
             <div class="bio-stat-item">
-              <dt class="bio-stat-number">10+</dt>
-              <dd class="t-body-sm">Merkittävää seikkailua dokumentoituna</dd>
+              <dt class="bio-stat-number">17 VRK</dt>
+              <dd class="t-body-sm">Retkikunta Huippuvuorten jäätiköillä</dd>
             </div>
             <div class="bio-stat-item">
-              <dt class="bio-stat-number">−30°C</dt>
-              <dd class="t-body-sm">Huippuvuorten pakkaset pahimmillaan</dd>
+              <dt class="bio-stat-number">7 VRK</dt>
+              <dd class="t-body-sm">Vaellus ilman mukana kannettua ruokaa</dd>
+            </div>
+            <div class="bio-stat-item">
+              <dt class="bio-stat-number">50+ KM</dt>
+              <dd class="t-body-sm">Yksin Vätsärissä ilman karttaa ja kompassia</dd>
             </div>
           </dl>
         </div>
       </aside>
     </div>
+
+    <!-- POHJOISEN MITTAKAAVA -->
+    <section class="prose-section section" style="border-top: 1px solid var(--color-border);">
+      <h2 class="prose-heading t-heading-2">Pohjoisen mittakaava</h2>
+      <div class="prose-body">
+        <p class="t-body">
+          Minua kiinnostavat erityisesti pohjoiset erämaat: pitkät etäisyydet, takamaastot,
+          kylmyys, jäätiköt ja paikat, joissa ulkopuolinen apu ei ole nopeasti saatavilla.
+        </p>
+        <p class="t-body" style="margin-top: 1.5rem;">
+          En etsi vaikeutta vain vaikeuden vuoksi. Hyvä seikkailu vaatii osaamista, mutta
+          sisältää aina jotakin, mitä ei voi hallita täysin. Sää muuttuu, reitti katkeaa tai
+          voimat alkavat huveta. Juuri silloin paljastuu, kuinka hyvin ihminen, ryhmä ja
+          resilienssi todella toimivat.
+        </p>
+      </div>
+    </section>
+
+    <!-- SEIKKAILUISTA ELOKUVIKSI -->
+    <section class="prose-section section" style="border-top: 1px solid var(--color-border);">
+      <h2 class="prose-heading t-heading-2">Seikkailuista elokuviksi</h2>
+      <div class="prose-body">
+        <p class="t-body">
+          Kamera ei ole retkillä sivustakatsoja. Se on osa hanketta alusta lähtien.
+        </p>
+        <p class="t-body" style="margin-top: 1.5rem;">
+          Suunnittelen seikkailut niin, että ne voidaan myös dokumentoida kunnolla.
+          Kuvaaminen jatkuu kylmässä, väsyneenä ja silloin, kun tapahtumat eivät noudata
+          käsikirjoitusta. Dokumentaarisen elokuvan arvo syntyy juuri siitä: tilanteita ei
+          suunnitella etukäteen, ei lavasteta uudelleen.
+        </p>
+        <p class="t-body" style="margin-top: 1.5rem;">
+          Vastaan projekteissani usein ideasta, suunnittelusta, kuvauksesta ja leikkauksesta.
+          Suuremmissa tuotannoissa työskentelen muiden kuvaajien, säveltäjien ja elokuva- ja
+          tv-alan ammattilaisten kanssa. Tavoitteena ei ole vain näyttää, missä kävimme, vaan
+          välittää, miltä matka tuntui. Hyvä tarina sisältää myös epäonnistumisia, joista
+          kuitenkin noustaan ylös.
+        </p>
+      </div>
+    </section>
+
+    <!-- INSINÖÖRIN MIELI -->
+    <section class="prose-section section" style="border-top: 1px solid var(--color-border);">
+      <h2 class="prose-heading t-heading-2">Insinöörin mieli, eränkävijän vaisto</h2>
+      <div class="prose-body">
+        <p class="t-body">
+          Taustaltani olen elektroniikkainsinööri ja Datascience-konsultti. Datan, järjestelmien
+          ja ongelmanratkaisun maailma näkyy tavassani suunnitella vaativia retkiä: tutkin
+          vaihtoehtoja, arvioin riskejä ja rakennan toimintamalleja tilanteisiin, joita ei
+          voi ennustaa tarkasti.
+        </p>
+        <p class="t-body" style="margin-top: 1.5rem;">
+          Erämaassa teoriasta tulee nopeasti käytäntöä. Siellä ratkaisevat havainnointi,
+          kokemus ja kyky tehdä riittävän hyvä päätös puutteellisilla tiedoilla.
+        </p>
+      </div>
+    </section>
 
     <!-- OSAAMINEN -->
     <section class="section" aria-labelledby="skills-heading" style="border-top: 1px solid var(--color-border);">
@@ -84,33 +138,63 @@ import Base from '@/layouts/Base.astro';
       </div>
       <div class="skills-grid">
         <div class="skill-item">
-          <h3 class="skill-title">Arktinen erätaito</h3>
+          <h3 class="skill-title">Retkikuntien suunnittelu ja johtaminen</h3>
           <p class="t-body-sm">
-            Navigointi, leiriytyminen, liikkuminen ääriolosuhteissa.
-            Pohjoisten alueiden sää, maasto ja riskit.
+            Reittien tutkiminen, ryhmän kokoaminen, logistiikka, turvallisuussuunnittelu
+            ja pitkäkestoisten hankkeiden johtaminen ideasta toteutukseen.
           </p>
         </div>
         <div class="skill-item">
-          <h3 class="skill-title">Selviytyminen</h3>
+          <h3 class="skill-title">Arktinen retkeily</h3>
           <p class="t-body-sm">
-            Pitkäkestoiset projektit minimaalisilla varusteilla.
-            Ravinnon hankinta luonnosta, majoittuminen ilman telttaa.
+            Navigointi, pitkät talvivaellukset, ahkioilla liikkuminen, kylmät olosuhteet
+            sekä toiminta syrjäisillä pohjoisilla alueilla.
           </p>
         </div>
         <div class="skill-item">
-          <h3 class="skill-title">Dokumentaarinen kuvaus</h3>
+          <h3 class="skill-title">Jäätiköt ja vuorikiipeily</h3>
           <p class="t-body-sm">
-            Elokuvallinen kerronta ääriolosuhteissa.
-            Kuvaaja, leikkaaja ja ohjaaja — yksi ihminen, yksi projekti.
+            Köysistössä liikkuminen, railoturvallisuus, railopelastusvalmius ja
+            vuoristossa toimiminen osana retkikuntaa.
           </p>
         </div>
         <div class="skill-item">
-          <h3 class="skill-title">Projektisuunnittelu</h3>
+          <h3 class="skill-title">Selviytyminen ja erätaidot</h3>
           <p class="t-body-sm">
-            Retkikuntien logistiikka, reittien tutkimus, riskienhallinta.
-            Yhteistyöprojektit tuotantoyhtiöiden ja brändien kanssa.
+            Suunnistaminen luonnon merkeistä, ravinnon hankkiminen, hätämajoitteet ja
+            toimintakyvyn ylläpitäminen niukoilla varusteilla haastavissa olosuhteissa.
           </p>
         </div>
+        <div class="skill-item">
+          <h3 class="skill-title">Dokumentaarinen elokuvanteko</h3>
+          <p class="t-body-sm">
+            Elokuvallinen kuvaaminen vaativissa olosuhteissa, käsikirjoittaminen,
+            leikkaaminen ja pitkien tosielämän tarinoiden rakentaminen.
+          </p>
+        </div>
+        <div class="skill-item">
+          <h3 class="skill-title">Tuotannot ja yhteistyöt</h3>
+          <p class="t-body-sm">
+            TV-tuotannot, dokumenttielokuvat sekä pitkäjänteiset yhteistyöprojektit
+            yritysten ja varustebrändien kanssa.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MIKSI LÄHDEN -->
+    <section class="prose-section section" style="border-top: 1px solid var(--color-border);">
+      <h2 class="prose-heading t-heading-2">Miksi lähden?</h2>
+      <div class="prose-body">
+        <p class="t-body">
+          Seikkailu on minulle tapa tutkia luontoa ja itseäni. Elokuva antaa kokemukselle
+          toisen elämän, ja usein inspiroi seuraajiani.
+        </p>
+        <p class="t-body" style="margin-top: 1.5rem;">
+          Parhaimmillaan matka ei pääty siihen, kun saavun takaisin ihmisten ilmoille.
+          Se jatkuu tarinana, joka saa myös katsojan pysähtymään kartan äärelle ja
+          miettimään, mitä seuraavan vaaran takana voisi olla.
+        </p>
       </div>
     </section>
 
@@ -144,9 +228,11 @@ import Base from '@/layouts/Base.astro';
   align-items: center;
 }
 
-.sakke-hero-placeholder {
+.sakke-hero-img {
   width: 100%;
   aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
 }
 
 .sakke-hero-intro h1 {
@@ -168,25 +254,26 @@ import Base from '@/layouts/Base.astro';
 .bio-stat-group {
   position: sticky;
   top: calc(var(--nav-height) + var(--space-8));
-  padding: var(--space-8);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+}
+
+.bio-stat-group > .t-label {
+  margin-bottom: var(--space-6);
+  color: var(--color-muted);
 }
 
 .bio-stat-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
 }
 
 .bio-stat-item {
+  padding-top: var(--space-6);
   padding-bottom: var(--space-6);
-  border-bottom: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
 }
 
 .bio-stat-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .bio-stat-number {
@@ -220,6 +307,22 @@ import Base from '@/layouts/Base.astro';
   margin-bottom: var(--space-3);
 }
 
+/* Prose sections */
+.prose-section {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.prose-heading {
+  padding-top: 0.2em;
+}
+
+.prose-body {
+  max-width: 56rem;
+}
+
 /* CTA */
 .cta-section {}
 
@@ -234,6 +337,11 @@ import Base from '@/layouts/Base.astro';
 
   .bio-stat-group {
     position: static;
+  }
+
+  .prose-section {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
   }
 }
 
