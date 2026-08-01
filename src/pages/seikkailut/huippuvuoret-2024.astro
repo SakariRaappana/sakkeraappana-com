@@ -1,0 +1,1134 @@
+---
+import Base from '@/layouts/Base.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('seikkailut', 'huippuvuoret-2024');
+if (!entry) throw new Error('Seikkailua ei löydy');
+
+const { nimi, paikka, vuosi, tiivistelma } = entry.data;
+
+const IMG = '/kuvat/seikkailut/Huippuvuoret/Kuvat';
+---
+
+<Base title={`${nimi} — Sakke Raappana`} description={tiivistelma}>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <img class="hero-img" src={`${IMG}/hero-2.jpg`} alt="Arktinen taival – Huippuvuoret" />
+    <div class="hero-gradient"></div>
+    <div class="hero-content container">
+      <div class="hero-meta">
+        <span class="hero-meta-eyebrow">Arktinen retkikunta / Svalbard Expedition</span>
+      </div>
+      <h1 class="hero-title">Arktinen taival <span class="hero-title-coord">79°N</span></h1>
+      <p class="hero-lead">Kuuden suomalaisen retkikunta Huippuvuorten jäätiköille. Tavoitteena saariston korkein huippu, Newtontoppen.</p>
+    </div>
+    <div class="hero-scroll">VIERITÄ ↓</div>
+  </section>
+
+  <!-- ===== FAKTAJUOVA ===== -->
+  <section class="fact-strip">
+    <div class="fact-grid container-wide">
+      <div class="fact-cell">
+        <dt>Kohde</dt>
+        <dd>Huippuvuoret</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Tavoite</dt>
+        <dd>Newtontoppen</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Kesto</dt>
+        <dd>17 vuorokautta</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Retkikunta</dt>
+        <dd>6 henkilöä</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Leveyspiiri</dt>
+        <dd>79°N</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Newtontoppen</dt>
+        <dd>1 717 m mpy</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Ahkion lähtöpaino</dt>
+        <dd>100 kg</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Elokuvan ensi-ilta</dt>
+        <dd>Tampere · joulukuu 2026</dd>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LEAD ===== -->
+  <section class="lead-section">
+    <p class="lead-text">Jokainen arktinen vuorokausi rakentui etenemisestä, yhteisistä toimintamalleista ja jatkuvasti muuttuvien olosuhteiden arvioinnista.</p>
+  </section>
+
+  <!-- ===== LUKU 01 — KOHTI HUIPPUVUORTEN KATTOA ===== -->
+  <section class="chapter container-wide">
+    <div class="chapter-image-left">
+      <img src={`${IMG}/Huippuvuoret_hiihtoa.jpg`} alt="Hiihtoa Huippuvuorten jäätiköllä" />
+    </div>
+    <div class="chapter-text">
+      <div class="chapter-label">01 — Kohti Huippuvuorten kattoa</div>
+      <h2 class="chapter-title">Halusin rakentaa retkikunnan, jossa pitkä arktinen hiihtovaellus ja dokumentaarinen elokuvanteko yhdistyvät.</h2>
+      <p>Kokosin kuusihenkisen ryhmän eri alojen osaajista ja johdin yli kaksi vuotta kestänyttä valmistautumista. Harjoittelimme fyysisen kunnon lisäksi jäätiköllä liikkumista köysistössä, railopelastusta, teltan myrskypystytystä, eräensiapua, tuliaseiden turvallista käsittelyä ja toimintaa jääkarhualueella.</p>
+      <p>Keväällä 2026 olimme valmiita lähtemään kohti 79. leveyspiiriä.</p>
+    </div>
+  </section>
+
+  <!-- ===== FULL-BLEED 1 ===== -->
+  <figure class="full-bleed">
+    <img src={`${IMG}/Huippuvuoret_teltat_vastavalo.jpg`} alt="Teltat vastavaloissa Huippuvuorten jäätiköllä" />
+    <figcaption>79°N — Kodin ja turvapaikkan yhdistelmä</figcaption>
+  </figure>
+
+  <!-- ===== LUKU 02 — VALKOINEN MAAILMA ===== -->
+  <section class="chapter-02 container-wide">
+    <div class="chapter-02-text">
+      <div class="chapter-label">02 — Valkoinen maailma</div>
+      <h2 class="chapter-title">Whiteout saattoi hävittää horisontin ja kaikki maanpinnan muodot.</h2>
+      <p>Liikuimme suksilla ja kuljetimme varusteemme ahkioissa halki laajojen jäätiköiden. Päivät muodostuivat etenemisestä, leirin rakentamisesta ja jatkuvasti muuttuvien olosuhteiden arvioinnista.</p>
+      <p>Railoriskin kasvaessa etenimme köysistössä, valmiina pysäyttämään mahdollisen putoamisen. Teltta oli kotimme ja turvapaikkamme. Ennen nousua yläjäätikölle ylläpidimme ympärivuorokautista jääkarhuvahtia — yksi valvoi muiden nukkuessa.</p>
+    </div>
+    <div class="chapter-02-images">
+      <div class="ch02-img-main">
+        <img src={`${IMG}/Huippuvuoret_jaatikko.jpg`} alt="Huippuvuorten jäätikkö" />
+      </div>
+      <div class="ch02-img-sm">
+        <img src={`${IMG}/Huippuvuoret_Sakke_Raappana.jpg`} alt="Sakke Raappana Huippuvuorilla" />
+      </div>
+      <div class="ch02-img-sm">
+        <img src={`${IMG}/Huippuvuoret_huipulla.jpg`} alt="Retkikunta huipulla" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FULL-BLEED 2 ===== -->
+  <figure class="full-bleed">
+    <img src={`${IMG}/hero-3.jpg`} alt="Arktinen maisema Huippuvuorilla" />
+  </figure>
+
+  <!-- ===== LUKU 03 — RETKIKUNTA ===== -->
+  <section class="chapter-03 container-wide">
+    <div class="chapter-03-sticky">
+      <div class="chapter-label">03 — Retkikunta</div>
+      <h2 class="chapter-title">Matka perustui tarkasti rakennettuun ryhmään ja siihen, että jokainen kantoi vastuuta muista myös väsyneenä.</h2>
+      <div class="callout">
+        <div class="callout-item">
+          <span class="callout-num">6</span>
+          <span class="callout-label">Retkikunnan jäsenet</span>
+        </div>
+        <div class="callout-item">
+          <span class="callout-num">17</span>
+          <span class="callout-label">Vuorokautta</span>
+        </div>
+        <div class="callout-item">
+          <span class="callout-num">79°</span>
+          <span class="callout-label">Leveyspiiri</span>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-03-body">
+      <p>Arktinen taival ei ollut yksilösuoritus. Jokaisella retkikunnan jäsenellä oli oma vastuualueensa jäätikköturvallisuudesta ensiapuun, fyysiseen valmistautumiseen ja jääkarhuturvallisuuteen.</p>
+      <blockquote class="pull-quote">Keskellä maisemaa, jossa ihminen ei ole ravintoketjun huipulla, ryhmän yhteinen toimintamalli on ainoa vakuutus.</blockquote>
+      <p>Samuli Raappana toimi retkikunnan toisena kuvaajana ja stillkuvaajana. Yhdessä dokumentoimme matkan harjoittelusta Huippuvuorten jäätiköille — kaikki materiaali pitkää dokumenttielokuvaa varten.</p>
+      <div class="ch03-images">
+        <img src={`${IMG}/Huippuvuoret_hiihtoa.jpg`} alt="Hiihtoa jäätiköllä" />
+        <img src={`${IMG}/Huippuvuoret_jaatikko.jpg`} alt="Jäätikkömaailma" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KUMPPANUUS ===== -->
+  <section class="partners-section">
+    <div class="container-wide">
+      <div class="partners-top">
+        <div class="partners-heading-block">
+          <div class="chapter-label">Yhteistyö</div>
+          <h2 class="partners-title">Kumppanuus<br>osana tarinaa.</h2>
+        </div>
+        <p class="partners-lead">Arktinen taival osoittaa, että vaikuttava yhteistyö voi alkaa kauan ennen varsinaista retkeä. Kumppaneille on syntynyt pitkäikäistä valokuva- ja videosisältöä, tuotetestausta todellisissa olosuhteissa sekä runsasta somenäkyvyyttä. Elokuva ja teatteriensi-ilta jatkavat samaa tarinaa joulukuussa 2026.</p>
+      </div>
+      <div class="partners-grid">
+        <div class="partner-item">
+          <div class="partner-logo-wrap">
+            <img src={`${IMG}/svala_logo.png`} alt="Svala of Finland" class="partner-logo" />
+          </div>
+          <p class="partner-text">Svalan tuotteita käytettiin ja testattiin harjoitusvaelluksilla sekä Huippuvuorten arktisissa olosuhteissa. Yhteistyö rakentui tuotteiden todellisen käytön, pitkäaikaisen kokemuksen ja dokumentaarisen sisällön ympärille — ei pelkän näkyvyyden.</p>
+        </div>
+        <div class="partner-item">
+          <div class="partner-logo-wrap">
+            <img src={`${IMG}/poppamies_logo.png`} alt="Poppamies" class="partner-logo" />
+          </div>
+          <p class="partner-text">Poppamies oli mukana retkikunnan ruokien kehittämisessä. Yhteistyöstä syntyi reseptejä, tulisia makuhetkiä ja sisältöä, jossa tuotteet olivat luonteva osa retkikunnan valmistautumista ja päivittäistä elämää.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CREDITS ===== -->
+  <section class="credits-section">
+    <div class="credits-grid container-wide">
+      <div class="credit-cell">
+        <dt>Retkikunnan johtaja ja elokuvantekijä</dt>
+        <dd>Sakke Raappana</dd>
+      </div>
+      <div class="credit-cell">
+        <dt>Toinen kuvaaja ja stillkuvat</dt>
+        <dd>Samuli Raappana</dd>
+      </div>
+      <div class="credit-cell">
+        <dt>Alkuperäinen musiikki</dt>
+        <dd>Peter Roe</dd>
+      </div>
+      <div class="credit-cell">
+        <dt>Värimäärittely</dt>
+        <dd>Mikko Suuronen · Agalma Films</dd>
+      </div>
+    </div>
+    <p class="credits-photo container-wide">Kaikki artikkelin valokuvat: Samuli Raappana</p>
+  </section>
+
+  <!-- ===== ELOKUVA ===== -->
+  <section class="film-section">
+    <div class="container-wide">
+      <div class="film-header">
+        <div>
+          <div class="chapter-label">Elokuva — Arktinen taival</div>
+          <h2 class="film-title">Dokumenttielokuva retkikunnan<br>matkasta Newtontoppenille.</h2>
+        </div>
+        <p class="film-sub">Alkuperäisen soundtrackin on säveltänyt Peter Roe. Värimäärittely: Mikko Suuronen / Agalma Films.</p>
+      </div>
+      <div class="film-embed-wrap">
+        <img src={`${IMG}/Huippuvuoret_huipulla.jpg`} alt="Arktinen taival — elokuva tulossa" class="film-poster-dim" />
+        <div class="film-gradient"></div>
+        <div class="film-premiere">
+          <span class="film-premiere-label">Elokuvan ensi-ilta</span>
+          <span class="film-premiere-date">Tampere · joulukuu 2026</span>
+          <span class="film-premiere-cta">Elokuva julkaistaan joulukuussa 2026 →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIDEOSARJA ===== -->
+  <section class="series-section container-wide">
+    <div class="section-header">
+      <span class="t-label">Videosarja</span>
+      <span class="section-line"></span>
+      <span class="gallery-label">Valmistautumisen tarina</span>
+    </div>
+    <div class="series-intro-block">
+      <p class="series-intro">Ennen varsinaista elokuvaa julkaistiin kuusi videota, jotka seuraavat retkikunnan valmistautumista — harjoituksista jääkarhuturvallisuuteen. Yhteistyökumppanit ovat luonteva osa tätä tarinaa.</p>
+      <div class="series-stats">
+        <div class="series-stat">
+          <span class="series-stat-num">90 000+</span>
+          <span class="series-stat-label">katselukertaa YouTubessa</span>
+        </div>
+        <div class="series-stat">
+          <span class="series-stat-num">Tuhansia</span>
+          <span class="series-stat-label">seuraajia <a href="https://www.arktinentaival.fi/" target="_blank" rel="noopener" class="series-stat-link">arktinentaival.fi</a>:ssä</span>
+        </div>
+      </div>
+    </div>
+    <div class="series-grid">
+      <a href="https://youtu.be/oP2enE3SXCc" target="_blank" rel="noopener" class="series-card">
+        <div class="series-thumb">
+          <img src="https://img.youtube.com/vi/oP2enE3SXCc/mqdefault.jpg" alt="Arktinen taival — projektin esittely" />
+          <div class="series-play-btn" aria-hidden="true"></div>
+        </div>
+        <div class="series-info">
+          <span class="series-ep">Johdanto</span>
+          <span class="series-title">Kanavan tulevaisuus — projektin esittely</span>
+        </div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=Xor6LcOOOfA" target="_blank" rel="noopener" class="series-card">
+        <div class="series-thumb">
+          <img src="https://img.youtube.com/vi/Xor6LcOOOfA/mqdefault.jpg" alt="Myrskyharjoitus" />
+          <div class="series-play-btn" aria-hidden="true"></div>
+        </div>
+        <div class="series-info">
+          <span class="series-ep">Osa 1</span>
+          <span class="series-title">Myrskyharjoitus</span>
+        </div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=PQ54G9uludk" target="_blank" rel="noopener" class="series-card">
+        <div class="series-thumb">
+          <img src="https://img.youtube.com/vi/PQ54G9uludk/mqdefault.jpg" alt="Jääkarhuturvallisuus" />
+          <div class="series-play-btn" aria-hidden="true"></div>
+        </div>
+        <div class="series-info">
+          <span class="series-ep">Osa 2</span>
+          <span class="series-title">Jääkarhuturvallisuus</span>
+        </div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=kfImK5xZLVk" target="_blank" rel="noopener" class="series-card">
+        <div class="series-thumb">
+          <img src="https://img.youtube.com/vi/kfImK5xZLVk/mqdefault.jpg" alt="Jäätikköharjoitus" />
+          <div class="series-play-btn" aria-hidden="true"></div>
+        </div>
+        <div class="series-info">
+          <span class="series-ep">Osa 3</span>
+          <span class="series-title">Jäätikköharjoitus</span>
+        </div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=Zt3JHi4Yexk" target="_blank" rel="noopener" class="series-card">
+        <div class="series-thumb">
+          <img src="https://img.youtube.com/vi/Zt3JHi4Yexk/mqdefault.jpg" alt="Viimeinen harjoitus ennen Huippuvuoria" />
+          <div class="series-play-btn" aria-hidden="true"></div>
+        </div>
+        <div class="series-info">
+          <span class="series-ep">Osa 4</span>
+          <span class="series-title">Viimeinen harjoitus ennen Huippuvuoria</span>
+        </div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=9OSXu2hi_UQ" target="_blank" rel="noopener" class="series-card">
+        <div class="series-thumb">
+          <img src="https://img.youtube.com/vi/9OSXu2hi_UQ/mqdefault.jpg" alt="Viimeinen video" />
+          <div class="series-play-btn" aria-hidden="true"></div>
+        </div>
+        <div class="series-info">
+          <span class="series-ep">Osa 5</span>
+          <span class="series-title">Viimeinen video</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== SEURAAVA ===== -->
+  <section class="next-section container-wide">
+    <a href="/seikkailut" class="next-card">
+      <img src={`${IMG}/hero-3.jpg`} alt="" class="next-img" />
+      <div class="next-overlay">
+        <span class="chapter-label">Kaikki seikkailut →</span>
+        <span class="next-title">Seikkailut</span>
+      </div>
+    </a>
+  </section>
+
+</Base>
+
+<style>
+/* ===== LAYOUT ===== */
+.container-wide {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-10);
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(14,17,19,0.55) 0%,
+    rgba(14,17,19,0.12) 38%,
+    rgba(14,17,19,0.35) 68%,
+    rgba(14,17,19,0.96) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: var(--space-16);
+}
+
+.hero-meta {
+  margin-bottom: var(--space-6);
+}
+
+.hero-meta-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-glacier);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 9vw, 7.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-6);
+  color: var(--color-text);
+}
+
+.hero-title-coord {
+  font-size: 0.45em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--color-glacier);
+  vertical-align: middle;
+  margin-left: 0.2em;
+}
+
+.hero-lead {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--color-body);
+  margin: 0;
+  max-width: 42ch;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.24em;
+  color: var(--color-muted);
+}
+
+/* ===== FAKTAJUOVA ===== */
+.fact-strip {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.fact-cell {
+  padding: var(--space-8) var(--space-8);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.fact-cell:nth-child(4n) { border-right: none; }
+.fact-cell:nth-last-child(-n+4) { border-bottom: none; }
+
+.fact-cell dt {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-glacier);
+  margin-bottom: var(--space-3);
+}
+
+.fact-cell dd {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ===== LEAD ===== */
+.lead-section {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: var(--space-32) var(--space-10);
+  text-align: center;
+}
+
+.lead-text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  line-height: 1.45;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ===== LUKU 01 ===== */
+.chapter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+  padding-block: var(--space-10);
+}
+
+.chapter-image-left {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+.chapter-image-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
+}
+
+.chapter-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-glacier);
+  margin-bottom: var(--space-4);
+}
+
+.chapter-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-6);
+  color: var(--color-text);
+}
+
+.chapter-text p,
+.chapter-02-text p,
+.chapter-03-body p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.65;
+  color: var(--color-body);
+  margin: 0 0 var(--space-5);
+}
+
+/* ===== FULL-BLEED ===== */
+.full-bleed {
+  margin: var(--space-20) 0;
+  position: relative;
+}
+
+.full-bleed img {
+  width: 100%;
+  height: 78vh;
+  min-height: 460px;
+  object-fit: cover;
+}
+
+.full-bleed figcaption {
+  position: absolute;
+  bottom: var(--space-6);
+  left: var(--space-10);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  background: rgba(14,17,19,0.55);
+  backdrop-filter: blur(4px);
+  padding: var(--space-2) var(--space-4);
+}
+
+/* ===== LUKU 02 ===== */
+.chapter-02 {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-16);
+  align-items: start;
+  padding-block: var(--space-10);
+}
+
+.chapter-02-images {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--space-3);
+  height: 600px;
+}
+
+.ch02-img-main {
+  grid-row: span 2;
+  overflow: hidden;
+}
+
+.ch02-img-main img,
+.ch02-img-sm img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ch02-img-sm { overflow: hidden; }
+
+/* ===== LUKU 03 ===== */
+.chapter-03 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: start;
+  padding-block: var(--space-10);
+  overflow: clip;
+}
+
+.chapter-03-sticky {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-8));
+}
+
+.callout {
+  display: flex;
+  gap: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-6);
+}
+
+.callout-item { display: flex; flex-direction: column; }
+
+.callout-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.callout-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-top: var(--space-2);
+}
+
+.pull-quote {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.55;
+  color: var(--color-text);
+  border-left: 2px solid var(--color-glacier);
+  padding-left: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+.ch03-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.ch03-images img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
+
+/* ===== ELOKUVA ===== */
+.film-section {
+  margin-top: var(--space-32);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-20);
+}
+
+.film-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+.film-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+  margin: var(--space-3) 0 0;
+}
+
+.film-sub {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  max-width: 22rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.film-embed-wrap {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #000;
+}
+
+.film-poster-dim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.28;
+}
+
+.film-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14,17,19,0.1), rgba(14,17,19,0.65));
+}
+
+.film-premiere {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.film-premiere-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-glacier);
+}
+
+.film-premiere-date {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.film-premiere-cta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-top: var(--space-4);
+}
+
+/* ===== KUMPPANUUS ===== */
+.partners-section {
+  margin-top: var(--space-32);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-20);
+}
+
+.partners-top {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: var(--space-16);
+  align-items: start;
+  margin-bottom: var(--space-16);
+  padding-bottom: var(--space-16);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.partners-heading-block { }
+
+.partners-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  color: var(--color-text);
+  margin: var(--space-4) 0 0;
+}
+
+.partners-lead {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--color-body);
+  margin: 0;
+  padding-top: var(--space-3);
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+}
+
+.partner-item {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-8);
+}
+
+.partner-logo-wrap {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-8);
+}
+
+.partner-logo {
+  height: 100%;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}
+
+.partner-text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--color-body);
+  margin: 0;
+}
+
+/* ===== CREDITS ===== */
+.credits-section {
+  padding-block: var(--space-16);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.credits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-bottom: var(--space-8);
+}
+
+.credit-cell {
+  padding: var(--space-6) var(--space-6) var(--space-6) 0;
+  border-right: 1px solid var(--color-border);
+  padding-right: var(--space-8);
+  margin-right: 0;
+}
+
+.credit-cell:last-child { border-right: none; }
+.credit-cell:not(:first-child) { padding-left: var(--space-8); }
+
+.credit-cell dt {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-glacier);
+  margin-bottom: var(--space-2);
+}
+
+.credit-cell dd {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.credits-photo {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ===== SECTION HEADER (jaettu) ===== */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.gallery-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ===== VIDEOSARJA ===== */
+.series-section {
+  padding-top: var(--space-24);
+  padding-bottom: var(--space-24);
+}
+
+.series-intro-block {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-12);
+  align-items: start;
+  margin-bottom: var(--space-12);
+}
+
+.series-intro {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-body);
+  margin: 0;
+}
+
+.series-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  border-left: 1px solid var(--color-border);
+  padding-left: var(--space-10);
+  min-width: 200px;
+}
+
+.series-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.series-stat-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.series-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  line-height: 1.4;
+}
+
+.series-stat-link {
+  color: var(--color-glacier);
+  text-decoration: none;
+}
+
+.series-stat-link:hover {
+  text-decoration: underline;
+}
+
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.series-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  text-decoration: none;
+  color: inherit;
+}
+
+.series-thumb {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #000;
+}
+
+.series-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.82;
+  transition: opacity 0.3s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+.series-card:hover .series-thumb img {
+  opacity: 0.65;
+  transform: scale(1.03);
+}
+
+.series-play-btn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.series-play-btn::after {
+  content: '';
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 50%;
+  background: rgba(14,17,19,0.35);
+  backdrop-filter: blur(2px);
+  position: relative;
+}
+
+.series-play-btn::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 13px solid rgba(255,255,255,0.9);
+  margin-left: 3px;
+  z-index: 1;
+}
+
+.series-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.series-ep {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-glacier);
+}
+
+.series-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+/* ===== SEURAAVA ===== */
+.next-section {
+  padding-bottom: var(--space-24);
+}
+
+.next-card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.next-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  opacity: 0.5;
+  transition: opacity 0.4s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.next-card:hover .next-img {
+  opacity: 0.65;
+  transform: scale(1.02);
+}
+
+.next-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 var(--space-12);
+  background: linear-gradient(90deg, rgba(14,17,19,0.85), rgba(14,17,19,0.35));
+}
+
+.next-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  line-height: 1;
+  margin-top: var(--space-4);
+}
+
+/* ===== RESPONSIIVISUUS ===== */
+@media (max-width: 900px) {
+  .fact-grid { grid-template-columns: repeat(2, 1fr); }
+  .fact-cell:nth-child(4n) { border-right: 1px solid var(--color-border); }
+  .fact-cell:nth-child(2n) { border-right: none; }
+  .fact-cell:nth-last-child(-n+4) { border-bottom: 1px solid var(--color-border); }
+  .fact-cell:nth-last-child(-n+2) { border-bottom: none; }
+
+  .chapter,
+  .chapter-02,
+  .chapter-03 { grid-template-columns: 1fr; }
+
+  .chapter-image-left { aspect-ratio: 16/9; }
+  .chapter-02-images { height: 400px; }
+  .chapter-03-sticky { position: static; }
+
+  .partners-top { grid-template-columns: 1fr; gap: var(--space-8); }
+  .partners-grid { grid-template-columns: 1fr; gap: var(--space-10); }
+  .series-intro-block { grid-template-columns: 1fr; }
+  .series-stats { border-left: none; border-top: 1px solid var(--color-border); padding-left: 0; padding-top: var(--space-6); flex-direction: row; gap: var(--space-10); }
+  .series-grid { grid-template-columns: repeat(2, 1fr); }
+  .credits-grid { grid-template-columns: repeat(2, 1fr); }
+  .credit-cell:nth-child(2n) { border-right: none; }
+  .credit-cell:nth-child(odd):not(:first-child) { padding-left: 0; }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 180px;
+  }
+  .gal-a { grid-column: span 1; grid-row: span 1; }
+  .gal-b { grid-column: span 1; }
+  .gal-c { grid-column: span 1; }
+  .gal-d { grid-column: span 1; }
+}
+
+@media (max-width: 600px) {
+  .fact-grid { grid-template-columns: 1fr 1fr; }
+  .ch03-images { grid-template-columns: 1fr; }
+  .film-header { flex-direction: column; align-items: flex-start; }
+  .callout { gap: var(--space-5); }
+  .series-grid { grid-template-columns: 1fr; }
+  .credits-grid { grid-template-columns: 1fr; }
+  .credit-cell { border-right: none; padding-left: 0; }
+  .credit-cell:not(:first-child) { padding-left: 0; border-top: 1px solid var(--color-border); }
+}
+</style>

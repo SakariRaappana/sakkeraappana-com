@@ -1,0 +1,469 @@
+/* ═══════════════════════════════════════════════════════════
+   LEVEYSPIIRI · The Northern Parallel
+   Visuaalinen identiteetti — design tokens & perustyylit
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Perusvärit · tumma (ensisijainen) ───────────────────── */
+  --color-bg:        #0E1113;   /* Grafiitti — ensisijainen tausta */
+  --color-surface:   #181C1F;   /* Kivi — paneeli / kortti */
+  --color-surface-2: #1F2529;   /* Kohotettu paneeli */
+  --color-border:    #40464B;   /* Liuske — rajat, viivat */
+
+  /* ── Teksti ──────────────────────────────────────────────── */
+  --color-text:  #ECEAE3;   /* Pilvi — otsikot, vahva teksti */
+  --color-body:  #D3D5D7;   /* Utu — leipäteksti */
+  --color-muted: #8A9095;   /* Sumu — toissijainen teksti, meta */
+
+  /* ── Korosteet ───────────────────────────────────────────── */
+  --color-glacier: #87A9BE;   /* Jäätikkö — linkit, aktiiviset tilat. Säästeliäästi. */
+  --color-glacier-dim: rgba(135, 169, 190, 0.14);
+  --color-fire:    #C2997F;   /* Nuotio — vain käynnissä oleva retkikunta */
+  --color-fire-dim: rgba(194, 153, 127, 0.16);
+  --color-accent: var(--color-glacier);
+
+  /* Yhtenäinen "tummalla"-pinta myös vaaleassa teemassa (napit ym.) */
+  --color-on-accent: #0E1113;
+
+  /* ── Typografia ──────────────────────────────────────────── */
+  --font-display: 'Archivo', 'Arial Narrow', sans-serif;      /* Otsikot */
+  --font-body:    'Newsreader', Georgia, 'Times New Roman', serif; /* Leipä */
+  --font-mono:    'IBM Plex Mono', ui-monospace, monospace;   /* Data / UI */
+
+  /* ── Väli (perus 8px) ────────────────────────────────────── */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ── Grid & mitat ────────────────────────────────────────── */
+  --max-width:     1180px;  /* Sisältöleveys */
+  --content-width: 720px;   /* Pitkän tekstin luettava leveys */
+  --nav-height:    5rem;
+  --section-gap:   clamp(4rem, 10vw, 7.5rem); /* 120px osioväli */
+
+  /* ── Liike ───────────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur:         0.6s; /* 500–900ms · hidas, hallittu */
+}
+
+/* ── Vaalea · toimituksellinen (Sakke, Yhteistyö) ──────────── */
+[data-theme='light'] {
+  --color-bg:        #F3F1EA;   /* Lumi */
+  --color-surface:   #E9E6DD;
+  --color-surface-2: #E0DCD1;
+  --color-border:    #D2CEC3;
+
+  --color-text:  #0E1113;   /* Grafiitti tekstinä */
+  --color-body:  #2C3134;
+  --color-muted: #5D6367;
+
+  --color-glacier: #4E7387;   /* Tummempi jäätikkö kontrastin vuoksi */
+  --color-glacier-dim: rgba(78, 115, 135, 0.14);
+  --color-fire:    #A97455;
+  --color-fire-dim: rgba(169, 116, 85, 0.16);
+  --color-on-accent: #F3F1EA;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Reset
+   ═══════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-body);
+  font-family: var(--font-body);
+  font-size: clamp(1.1875rem, 1.1rem + 0.35vw, 1.4375rem); /* 19–23px */
+  font-weight: 400;
+  line-height: 1.58;
+  min-height: 100vh;
+  transition: background-color 0.4s var(--ease-out);
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+::selection {
+  background: var(--color-glacier);
+  color: var(--color-on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-glacier);
+  outline-offset: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Typografia
+   ═══════════════════════════════════════════════════════════ */
+
+/* DISPLAY / OTSIKOT — Archivo 700/800, tiukka väli */
+.t-display {
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, 9vw, 8.25rem);  /* 64–132px */
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  hyphens: none;
+}
+
+.t-heading-1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  hyphens: none;
+}
+
+.t-heading-2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 3.25rem);  /* 32–52px */
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+  hyphens: none;
+}
+
+.t-heading-3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  hyphens: none;
+}
+
+/* Toimituksellinen antiikva-korostus otsikoiden sisällä (<em>) */
+.t-display em,
+.t-heading-1 em,
+.t-heading-2 em,
+.t-heading-3 em {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.005em;
+  color: var(--color-glacier);
+}
+
+/* DATA / UI — IBM Plex Mono, väljä väli, versaali */
+.t-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--color-body);
+}
+
+/* LEIPÄTEKSTI — Newsreader */
+.t-body {
+  font-family: var(--font-body);
+  font-size: clamp(1.1875rem, 1.1rem + 0.35vw, 1.4375rem);
+  line-height: 1.58;
+  color: var(--color-body);
+}
+
+.t-body-sm {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+.t-lead {
+  font-family: var(--font-body);
+  font-size: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Layout-utiliteetit
+   ═══════════════════════════════════════════════════════════ */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}
+
+.section {
+  padding-block: var(--section-gap);
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Painikkeet — terävät kulmat, ei pyöristyksiä
+   ═══════════════════════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.85rem var(--space-6);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 0;
+  transition: background 0.3s var(--ease-out),
+              color 0.3s var(--ease-out),
+              border-color 0.3s var(--ease-out),
+              opacity 0.3s var(--ease-out);
+}
+
+.btn-primary {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.btn-primary:hover {
+  opacity: 0.82;
+}
+
+.btn-ghost {
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-glacier);
+  color: var(--color-glacier);
+}
+
+/* Tekstilinkki, jossa nuoli — "Katso elokuva →" */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-glacier);
+  transition: gap 0.25s var(--ease-out), opacity 0.25s var(--ease-out);
+}
+
+.link-arrow:hover {
+  gap: var(--space-3);
+  opacity: 0.8;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Faktajuova — monospace-datajuova (ohjeisto §10)
+   ═══════════════════════════════════════════════════════════ */
+.data-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8) var(--space-12);
+  align-items: flex-start;
+}
+
+.data-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.data-item dt,
+.data-key {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.data-item dd,
+.data-value {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+}
+
+/* Käynnissä olevan retkikunnan merkki (Nuotio) */
+.tag-live {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-fire);
+}
+
+.tag-live::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-fire);
+  box-shadow: 0 0 0 0 var(--color-fire);
+  animation: livePulse 2.4s var(--ease-out) infinite;
+}
+
+@keyframes livePulse {
+  0%   { box-shadow: 0 0 0 0 var(--color-fire-dim); }
+  70%  { box-shadow: 0 0 0 8px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tag-live::before { animation: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Erotin
+   ═══════════════════════════════════════════════════════════ */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+  border: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Prose (Markdown-leipäteksti)
+   ═══════════════════════════════════════════════════════════ */
+.prose {
+  max-width: var(--content-width);
+  font-family: var(--font-body);
+  color: var(--color-body);
+}
+
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--color-text);
+  margin-top: var(--space-16);
+  margin-bottom: var(--space-4);
+}
+
+.prose h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-3);
+}
+
+.prose p {
+  margin-bottom: var(--space-6);
+  font-size: clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem);
+  line-height: 1.6;
+  color: var(--color-body);
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose a {
+  color: var(--color-glacier);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.prose strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--color-glacier);
+  padding-left: var(--space-6);
+  margin: var(--space-8) 0;
+  font-style: italic;
+  color: var(--color-text);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Kuva-paikkamerkki (kunnes oikeat valokuvat)
+   ═══════════════════════════════════════════════════════════ */
+.img-placeholder {
+  background:
+    radial-gradient(ellipse at 65% 35%, var(--color-glacier-dim) 0%, transparent 55%),
+    linear-gradient(160deg, var(--color-surface-2) 0%, var(--color-bg) 100%);
+}

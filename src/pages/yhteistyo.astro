@@ -1,0 +1,252 @@
+---
+import Base from '@/layouts/Base.astro';
+
+const useCases = [
+  {
+    otsikko: 'Dokumentti- ja televisiotuotannot',
+    kuvaus: 'Yhteistuotannot, asiantuntijarooli tai täysi sisällöntuotanto arktisiin ympäristöihin. Kokemusta kuvauksesta, ohjauksesta ja editoinnista.',
+  },
+  {
+    otsikko: 'Brändi- ja tuoteyhteistyöt',
+    kuvaus: 'Varuste- ja ulkoilubrändit, joille aito arktinen ympäristö on oleellinen. Ei näyteltyä, ei studiotuotantoa.',
+  },
+  {
+    otsikko: 'Tapahtumat ja puheenvuorot',
+    kuvaus: 'Luennot arktisista retkikunnista, selviytymisestä, projektisuunnittelusta ja ääriolosuhteissa toimimisesta.',
+  },
+  {
+    otsikko: 'Haastattelut ja media',
+    kuvaus: 'Toimittajille ja medialle: haastattelupyynnöt ja kuva-aineistot saatavilla.',
+  },
+  {
+    otsikko: 'Seikkailu- ja retkikuntaprojektit',
+    kuvaus: 'Mukaan ottaminen suunniteltuihin retkikuntiin tai yhteishankkeet uusille alueille.',
+  },
+  {
+    otsikko: 'Kuva- ja videotuotannot',
+    kuvaus: 'Pohjoisissa tai vaativissa ympäristöissä tehtävät kuvaukset. Oma kalusto ja kokemus ääriolosuhteista.',
+  },
+];
+---
+
+<Base
+  title="Yhteistyö — Sakke Raappana"
+  description="Yhteistyömahdollisuudet: tuotannot, brändit, tapahtumat, haastattelut ja retkikuntaprojektit."
+  theme="light"
+>
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="container">
+      <p class="t-label" style="margin-bottom: 1.5rem;">Yhteistyö</p>
+      <h1 class="t-display">Tehdään<br /><em>yhteistyötä.</em></h1>
+      <p class="page-hero-sub t-body">
+        Tuotannoille, brändeille, medialle ja tapahtumajärjestäjille.
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- KÄYTTÖTAPAUKSET -->
+    <section class="section" aria-labelledby="usecases-heading">
+      <div class="section-label">
+        <span class="t-label" id="usecases-heading">Mitä tehdään yhdessä</span>
+      </div>
+      <div class="usecases-grid">
+        {useCases.map((item, i) => (
+          <div class="usecase-item">
+            <span class="usecase-number t-label">0{i + 1}</span>
+            <h2 class="usecase-title">{item.otsikko}</h2>
+            <p class="t-body-sm" style="margin-top: 0.75rem;">{item.kuvaus}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- YHTEYDENOTTO -->
+    <section class="section contact-section" aria-labelledby="contact-heading" style="border-top: 1px solid var(--color-border);">
+      <div class="contact-grid">
+        <div class="contact-intro">
+          <div class="section-label" style="margin-bottom: 2rem;">
+            <span class="t-label" id="contact-heading">Ota yhteyttä</span>
+          </div>
+          <h2 class="t-heading-2" style="margin-bottom: 1.5rem;">
+            Kerro projektista.
+          </h2>
+          <p class="t-body" style="color: var(--color-muted);">
+            Lyhyt viesti riittää. Vastaan yleensä muutaman päivän sisällä.
+          </p>
+          <div class="contact-direct" style="margin-top: 2rem;">
+            <p class="t-label" style="margin-bottom: 0.75rem;">Suoraan sähköpostilla</p>
+            <a href="mailto:sakke@sakkeraappana.com" class="contact-email">
+              sakke@sakkeraappana.com
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" name="contact" method="POST" data-netlify="true" action="/kiitos">
+          <div class="form-group">
+            <label for="nimi" class="form-label">Nimi</label>
+            <input type="text" id="nimi" name="nimi" class="form-input" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Sähköposti</label>
+            <input type="email" id="email" name="email" class="form-input" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="aihe" class="form-label">Aihe</label>
+            <select id="aihe" name="aihe" class="form-input form-select">
+              <option value="">Valitse...</option>
+              <option value="tuotanto">Dokumentti- tai televisiotuotanto</option>
+              <option value="brandi">Brändiyhteistyö</option>
+              <option value="tapahtuma">Tapahtuma tai puheenvuoro</option>
+              <option value="media">Haastattelu tai media</option>
+              <option value="retkikunta">Retkikuntaprojekti</option>
+              <option value="muu">Muu</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="viesti" class="form-label">Viesti</label>
+            <textarea id="viesti" name="viesti" class="form-input form-textarea" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            Lähetä viesti
+          </button>
+        </form>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+.page-hero {
+  padding-top: calc(var(--nav-height) + var(--space-24));
+  padding-bottom: var(--space-16);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-hero-sub {
+  max-width: 480px;
+  margin-top: var(--space-6);
+}
+
+.usecases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+}
+
+.usecase-item {
+  background: var(--color-bg);
+  padding: var(--space-8);
+}
+
+.usecase-number {
+  display: block;
+  margin-bottom: var(--space-4);
+  color: var(--color-glacier);
+}
+
+.usecase-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--color-text);
+}
+
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-24);
+  align-items: start;
+}
+
+.contact-email {
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+
+.contact-email:hover {
+  color: var(--color-glacier);
+}
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.form-input {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  outline: none;
+  transition: border-color 0.2s;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.form-input:focus {
+  border-color: var(--color-glacier);
+}
+
+.form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8680' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.form-select option {
+  background: var(--color-surface);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .usecases-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .usecases-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

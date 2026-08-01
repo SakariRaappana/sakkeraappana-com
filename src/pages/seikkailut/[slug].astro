@@ -1,0 +1,391 @@
+---
+import Base from '@/layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const seikkailut = await getCollection('seikkailut');
+  return seikkailut.map(s => ({
+    params: { slug: s.slug },
+    props: { seikkailu: s },
+  }));
+}
+
+const { seikkailu } = Astro.props;
+const {
+  nimi, paikka, vuosi, kesto, km, tiivistelma, kuva, elokuva, videot, osallistujat,
+  kaynnissa, vuodenaika, olosuhteet, nousu, koordinaatit, omavaraisuus,
+} = seikkailu.data;
+const { Content } = await seikkailu.render();
+
+// Yhtenäinen videolista: videot-kenttä tai vanha elokuva-kenttä fallbackina
+const videoList = videot ?? (elokuva ? [{ url: elokuva, nimi: undefined }] : null);
+
+function getYouTubeEmbedUrl(url: string): string {
+  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+  return match ? `https://www.youtube.com/embed/${match[1]}` : url;
+}
+
+// Faktajuova — vain määritellyt kentät
+const facts = [
+  { k: 'Sijainti',   v: paikka },
+  { k: 'Matka',      v: km ? `${km} km` : null },
+  { k: 'Kesto',      v: kesto },
+  { k: 'Vuodenaika', v: vuodenaika },
+  { k: 'Olosuhteet', v: olosuhteet },
+  { k: 'Nousu',      v: nousu },
+  { k: 'Vuosi',      v: String(vuosi) },
+].filter(f => f.v);
+
+const all = await getCollection('seikkailut');
+const others = all
+  .filter(s => s.slug !== seikkailu.slug)
+  .sort((a, b) => b.data.vuosi - a.data.vuosi)
+  .slice(0, 2);
+---
+
+<Base
+  title={`${nimi} — Sakke Raappana`}
+  description={tiivistelma}
+>
+  <!-- HERO -->
+  <div class="adventure-hero">
+    <div class:list={['adventure-hero-bg', { 'img-placeholder': !kuva }]} aria-hidden="true">
+      {kuva && <img class="adventure-hero-img" src={kuva} alt="" />}
+      <div class="adventure-hero-gradient"></div>
+    </div>
+    <div class="adventure-hero-content container">
+      {kaynnissa
+        ? <span class="tag-live" style="margin-bottom: var(--space-4);">Käynnissä</span>
+        : <p class="t-label" style="margin-bottom: var(--space-4);">{vuosi} · {paikka}</p>}
+      <h1 class="t-display">{nimi}</h1>
+    </div>
+  </div>
+
+  <!-- FAKTAJUOVA -->
+  <div class="stats-bar">
+    <div class="container">
+      <dl class="data-strip">
+        {facts.map(f => (
+          <div class="data-item">
+            <dt>{f.k}</dt>
+            <dd>{f.v}</dd>
+          </div>
+        ))}
+        {omavaraisuus && (
+          <div class="data-item">
+            <dt>Omavaraisuus</dt>
+            <dd>{omavaraisuus}</dd>
+          </div>
+        )}
+        {osallistujat && (
+          <div class="data-item">
+            <dt>Osallistujat</dt>
+            <dd>{osallistujat.join(', ')}</dd>
+          </div>
+        )}
+      </dl>
+    </div>
+  </div>
+
+  <!-- TIIVISTELMÄ (toimituksellinen pull-quote) -->
+  <div class="container">
+    <div class="adventure-summary">
+      <p class="adventure-summary-text">{tiivistelma}</p>
+    </div>
+  </div>
+
+  <!-- KERTOMUS -->
+  <div class="container">
+    <div class="prose adventure-body">
+      <Content />
+    </div>
+  </div>
+
+  <!-- KARTTA · REITTI · MITTAKAAVA -->
+  {koordinaatit && (
+    <div class="container">
+      <section class="route section" aria-labelledby="route-heading">
+        <div class="section-label">
+          <span class="t-label" id="route-heading">Kartta · reitti · mittakaava</span>
+        </div>
+        <div class="route-viz">
+          <span class="route-node t-mono">{koordinaatit.split('→')[0]?.trim()}</span>
+          <span class="route-line" aria-hidden="true">
+            <span class="route-dot route-dot--start"></span>
+            <span class="route-track"></span>
+            <span class="route-dot route-dot--end"></span>
+          </span>
+          <span class="route-node t-mono">{koordinaatit.split('→')[1]?.trim() ?? ''}</span>
+        </div>
+      </section>
+    </div>
+  )}
+
+  <!-- ELOKUVA / VIDEOSARJA -->
+  {videoList && videoList.length > 0 && (
+    <div class="container">
+      <section class="adventure-film section" aria-labelledby="film-heading">
+        <div class="section-label">
+          <span class="t-label" id="film-heading">
+            {videoList.length > 1 ? 'Videosarja' : 'Elokuva'}
+          </span>
+        </div>
+        <div class="film-embed">
+          <iframe
+            class="film-iframe"
+            src={getYouTubeEmbedUrl(videoList[0].url)}
+            title={videoList[0].nimi ?? nimi}
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        {videoList.length > 1 && (
+          <ol class="video-list">
+            {videoList.map((v, i) => (
+              <li class="video-list-item">
+                <span class="video-list-num t-mono">{i + 1}</span>
+                {i === 0 ? (
+                  <span class="video-list-link video-list-link--active">{v.nimi ?? `Osa 1`}</span>
+                ) : (
+                  <a href={v.url} target="_blank" rel="noopener noreferrer" class="video-list-link">
+                    {v.nimi ?? `Osa ${i + 1}`}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ol>
+        )}
+      </section>
+    </div>
+  )}
+
+  <!-- MUUT SEIKKAILUT -->
+  {others.length > 0 && (
+    <div class="container">
+      <section class="section" aria-labelledby="more-heading">
+        <div class="section-label">
+          <span class="t-label" id="more-heading">Muut seikkailut</span>
+        </div>
+        <div class="others-grid">
+          {others.map(s => (
+            <a href={`/seikkailut/${s.slug}`} class="other-card">
+              {s.data.kuva
+                ? <img class="other-card-thumb" src={s.data.kuva} alt={s.data.nimi} />
+                : <div class="other-card-thumb img-placeholder" aria-hidden="true"></div>}
+              <div class="other-card-body">
+                <p class="t-label">{s.data.paikka} · {s.data.vuosi}</p>
+                <h3 class="other-card-title">{s.data.nimi}</h3>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    </div>
+  )}
+</Base>
+
+<style>
+.adventure-hero {
+  position: relative;
+  height: 80vh;
+  min-height: 500px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.adventure-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.adventure-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.adventure-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--color-bg) 0%,
+    color-mix(in srgb, var(--color-bg) 35%, transparent) 55%,
+    transparent 100%
+  );
+}
+
+.adventure-hero-content {
+  position: relative;
+  z-index: 1;
+  padding-bottom: var(--space-16);
+}
+
+/* Faktajuova */
+.stats-bar {
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-8);
+  background: var(--color-surface);
+}
+
+/* Summary / pull-quote */
+.adventure-summary {
+  padding-block: var(--space-16);
+  border-bottom: 1px solid var(--color-border);
+  max-width: 860px;
+}
+
+.adventure-summary-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+  line-height: 1.35;
+  color: var(--color-text);
+}
+
+.adventure-body {
+  padding-block: var(--space-16);
+}
+
+/* Reittivisualisointi */
+.route-viz {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.route-node {
+  color: var(--color-glacier);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.route-line {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 120px;
+}
+
+.route-track {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--color-glacier), var(--color-border));
+}
+
+.route-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.route-dot--start { background: var(--color-glacier); }
+.route-dot--end {
+  background: transparent;
+  border: 1.5px solid var(--color-glacier);
+}
+
+/* Film embed */
+.film-iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 0;
+  display: block;
+}
+
+.video-list {
+  margin-top: var(--space-6);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.video-list-num {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  min-width: 1.5rem;
+}
+
+.video-list-link {
+  font-family: var(--font-body);
+  color: var(--color-glacier);
+  transition: opacity 0.2s;
+}
+
+.video-list-link--active {
+  color: var(--color-muted);
+  cursor: default;
+}
+
+.video-list-link:hover {
+  opacity: 0.7;
+}
+
+/* Others grid */
+.others-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.other-card {
+  display: block;
+  background: var(--color-surface);
+  overflow: hidden;
+  transition: background 0.3s var(--ease-out);
+}
+
+.other-card:hover {
+  background: var(--color-surface-2);
+}
+
+.other-card-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.other-card:hover .other-card-thumb {
+  transform: scale(1.03);
+}
+
+.other-card-body {
+  padding: var(--space-6);
+}
+
+.other-card-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: var(--space-2);
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+
+.other-card:hover .other-card-title {
+  color: var(--color-glacier);
+}
+
+@media (max-width: 640px) {
+  .others-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

@@ -1,0 +1,6 @@
+{
+  "hero-1.jpg": { "position": "center 90%", "scale": 1.1 },
+  "hero-2.jpg": { "position": "center 40%", "scale": 1.0 },
+  "hero-3.jpg": { "position": "center 75%", "scale": 1.3 },
+  "hero-4.jpg": { "position": "center 30%", "scale": 1.1 }
+}

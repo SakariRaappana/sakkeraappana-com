@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Astro cache
+.astro/
+
+# macOS
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Temp
+temp_kuvat/
+
+# Logs
+npm-debug.log*

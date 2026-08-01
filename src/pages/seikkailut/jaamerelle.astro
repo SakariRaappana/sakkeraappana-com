@@ -1,0 +1,821 @@
+---
+import Base from '@/layouts/Base.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('seikkailut', 'jaamerelle');
+if (!entry) throw new Error('Seikkailua ei löydy');
+
+const { nimi, paikka, vuosi, tiivistelma, elokuva, osallistujat } = entry.data;
+
+const IMG = '/kuvat/seikkailut/Jaamerelle/kuvat';
+
+const hasFilm = !!elokuva;
+function getYouTubeId(url: string): string {
+  const m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+  return m ? m[1] : '';
+}
+const youtubeId = elokuva ? getYouTubeId(elokuva) : '';
+---
+
+<Base title={`${nimi} — Sakke Raappana`} description={tiivistelma}>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <img class="hero-img" src={`${IMG}/Jaameri_1.jpg`} alt="Kanoottiretki Jäämerelle" />
+    <div class="hero-gradient"></div>
+    <div class="hero-content container">
+      <div class="hero-meta">
+        <span>{vuosi}</span>
+        <span class="hero-meta-line"></span>
+        <span class="hero-meta-place">{paikka}</span>
+      </div>
+      <h1 class="hero-title">{nimi}</h1>
+      <p class="hero-lead">426 kilometriä kanootilla Kalmankaltiosta Jäämerelle.</p>
+    </div>
+    <div class="hero-scroll">VIERITÄ ↓</div>
+  </section>
+
+  <!-- ===== FAKTAJUOVA ===== -->
+  <section class="fact-strip">
+    <div class="fact-grid container-wide">
+      <div class="fact-cell">
+        <dt>Reitti</dt>
+        <dd>Kalmankaltio–Munkefjord</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Kesto</dt>
+        <dd>13 vuorokautta</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Kuljettu matka</dt>
+        <dd>426 km</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Kartalta mitattu</dt>
+        <dd>382 km</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Kanto-osuudet</dt>
+        <dd>18 km</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Erämaat</dt>
+        <dd>Pulju, Lemmenjoki, Hammastunturi, Vätsäri</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Vedenjakajat</dt>
+        <dd>2</dd>
+      </div>
+      <div class="fact-cell">
+        <dt>Osallistujat</dt>
+        <dd>{osallistujat?.join(' & ')}</dd>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LEAD ===== -->
+  <section class="lead-section">
+    <p class="lead-text">Joka päivä uusi vesistö, uusi kanto-osuus ja sama kysymys: pääsemmekö ikinä Jäämerelle?</p>
+  </section>
+
+  <!-- ===== LUKU 01 — SINISIÄ VIIVOJA PITKIN ===== -->
+  <section class="chapter container-wide">
+    <div class="chapter-image-left">
+      <img src={`${IMG}/Jaameri_2.jpg`} alt="Kanoottiretken lähtö" />
+    </div>
+    <div class="chapter-text">
+      <div class="chapter-label">01 — Sinisiä viivoja pitkin</div>
+      <h2 class="chapter-title">Reitti, jota kumpikaan ei tuntenut.</h2>
+      <p>Olin etsinyt vuosia kartalta mahdollisimman pitkää ja erämaista kanoottireittiä Suomen halki. Lopulta vesistöt yhdistyivät: Kalmankaltiosta Avisuorajoelle, Ivalojokea Inarijärvelle, Vätsärin yli ja Munkelvaa pitkin Jäämerelle.</p>
+      <p>Lähdimme Petterin kanssa reitille, jota kumpikaan, tai kukaan ei tuntenut. Aikataulu oli tiukka, eikä ylimääräisille päiville tai virheille ollut tilaa.</p>
+    </div>
+  </section>
+
+  <!-- ===== FULL-BLEED 1 ===== -->
+  <figure class="full-bleed">
+    <img src={`${IMG}/Jaameri_3.jpg`} alt="Erämaa kanoottireitin varrella" />
+    <figcaption>Kalmankaltio → Munkefjord — Reittiä ei kukaan tuntenut</figcaption>
+  </figure>
+
+  <!-- ===== LUKU 02 — VEDESSÄ JA MAALLA ===== -->
+  <section class="chapter-02 container-wide">
+    <div class="chapter-02-text">
+      <div class="chapter-label">02 — Vedessä ja maalla</div>
+      <h2 class="chapter-title">Kartalla yhtenäiset vesistöt katkesivat yhä uudelleen maaksi.</h2>
+      <p>Alkumatkasta kannoimme ja raahasimme kanoottia Puljun erämaan soiden ja pajukoiden halki. Avisuorajoki kasvoi vähitellen Ivalojoeksi, ja matka alkoi viimein kulkea koskien mukana kohti Inaria.</p>
+      <p>Inarijärven pitkät selät vaihtuivat Vätsärin kiviseen sokkeloon. Siellä eteneminen kääntyi jälleen vastavirtaan. Sauvoimme ja kiskoimme kanoottia koskissa sekä kannoimme sitä soiden, louhikoiden ja jyrkkien rinteiden yli.</p>
+    </div>
+    <div class="chapter-02-images">
+      <div class="ch02-img-main">
+        <img src={`${IMG}/Jaameri_4.jpg`} alt="Kanootin kantaminen" />
+      </div>
+      <div class="ch02-img-sm">
+        <img src={`${IMG}/Jaameri_5.jpg`} alt="Koski" />
+      </div>
+      <div class="ch02-img-sm">
+        <img src={`${IMG}/Jaamrei_6.jpg`} alt="Vätsärin vesistöä" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FULL-BLEED 2 ===== -->
+  <figure class="full-bleed">
+    <img src={`${IMG}/Jaameri_8.jpg`} alt="Norjan tunturimaisema" />
+  </figure>
+
+  <!-- ===== LUKU 03 — VIIMEINEN VIRTA ===== -->
+  <section class="chapter-03 container-wide">
+    <div class="chapter-03-sticky">
+      <div class="chapter-label">03 — Viimeinen virta</div>
+      <h2 class="chapter-title">Kylmyys, sade ja uupumus kavensivat maailman seuraavaan jokeen.</h2>
+      <div class="callout">
+        <div class="callout-item">
+          <span class="callout-num">426</span>
+          <span class="callout-label">km kuljettu</span>
+        </div>
+        <div class="callout-item">
+          <span class="callout-num">18</span>
+          <span class="callout-label">km kantaen</span>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-03-body">
+      <p>Uutuanjoki vei meidät Norjan puolelle, missä se muuttui Munkelvaksi. Edessä olivat 20-metrinen putous, hengenvaaralliset kosket ja koko matkan raskaimmat kantamiset.</p>
+      <blockquote class="pull-quote">Kun makea jokivesi vaihtui suolaiseksi ja rannassa näkyivät ensimmäiset rakkolevät ja sinisimpukat, tehtävä oli suoritettu. Olimme päässeet Jäämerelle.</blockquote>
+      <div class="ch03-images">
+        <img src={`${IMG}/Jaameri_9.jpg`} alt="Jäämeren ranta" />
+        <img src={`${IMG}/Jaameri_10.jpg`} alt="Munkefjord" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ELOKUVA ===== -->
+  <section class="film-section">
+    <div class="container-wide">
+      <div class="film-header">
+        <div>
+          <div class="chapter-label">Elokuva — Jäämerelle</div>
+          <h2 class="film-title">Kaksituntinen dokumentti<br>Puljun soista Jäämerelle.</h2>
+        </div>
+        <p class="film-sub">Elokuvan kaikki musiikit on säveltänyt ja tuottanut: Samuli Raappana</p>
+      </div>
+      <div class="film-embed-wrap" id="film-wrap" data-video-id={youtubeId}>
+        {hasFilm ? (
+          <>
+            <img id="film-poster" src={`${IMG}/Jaamrei_7.jpg`} alt="Elokuvan esikatselukuva" />
+            <div class="film-gradient"></div>
+            <button class="film-play" id="film-play" aria-label="Katso elokuva">
+              <span class="film-play-icon" aria-hidden="true"></span>
+              <span class="film-play-label">Katso elokuva</span>
+            </button>
+          </>
+        ) : (
+          <div class="film-coming">
+            <img src={`${IMG}/Jaamrei_7.jpg`} alt="Elokuva tulossa" class="film-poster-dim" />
+            <div class="film-gradient"></div>
+            <div class="film-coming-label">Elokuva tulossa</div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERIA ===== -->
+  <section class="gallery-section container-wide">
+    <div class="section-header">
+      <span class="t-label">Galleria</span>
+      <span class="section-line"></span>
+      <span class="gallery-label">Jäämerelle 2024</span>
+    </div>
+    <div class="gallery-grid">
+      <div class="gal-a"><img src={`${IMG}/Jaameri_1.jpg`} alt="" /></div>
+      <div class="gal-b"><img src={`${IMG}/Jaameri_5.jpg`} alt="" /></div>
+      <div class="gal-c"><img src={`${IMG}/Jaamrei_7.jpg`} alt="" /></div>
+      <div class="gal-d"><img src={`${IMG}/Jaameri_8.jpg`} alt="" /></div>
+    </div>
+  </section>
+
+  <!-- ===== SEURAAVA ===== -->
+  <section class="next-section container-wide">
+    <a href="/seikkailut" class="next-card">
+      <img src={`${IMG}/Jaameri_3.jpg`} alt="" class="next-img" />
+      <div class="next-overlay">
+        <span class="chapter-label">Kaikki seikkailut →</span>
+        <span class="next-title">Seikkailut</span>
+      </div>
+    </a>
+  </section>
+
+</Base>
+
+{hasFilm && (
+  <script define:vars={{ youtubeId }}>
+    const wrap = document.getElementById('film-wrap');
+    const btn = document.getElementById('film-play');
+    if (btn && wrap && youtubeId) {
+      btn.addEventListener('click', () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
+        iframe.title = 'Jäämerelle — dokumenttielokuva';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+        wrap.innerHTML = '';
+        wrap.appendChild(iframe);
+      });
+    }
+  </script>
+)}
+
+<style>
+/* ===== LAYOUT ===== */
+.container-wide {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-10);
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(14,17,19,0.55) 0%,
+    rgba(14,17,19,0.12) 38%,
+    rgba(14,17,19,0.35) 68%,
+    rgba(14,17,19,0.96) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: var(--space-16);
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-glacier);
+  margin-bottom: var(--space-6);
+}
+
+.hero-meta-line {
+  width: 26px;
+  height: 1px;
+  background: var(--color-glacier);
+  opacity: 0.6;
+}
+
+.hero-meta-place { color: var(--color-text); }
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 9vw, 7.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-6);
+  color: var(--color-text);
+}
+
+.hero-lead {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--color-body);
+  margin: 0;
+  max-width: 42ch;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.24em;
+  color: var(--color-muted);
+}
+
+/* ===== FAKTAJUOVA ===== */
+.fact-strip {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.fact-cell {
+  padding: var(--space-8) var(--space-8);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.fact-cell:nth-child(4n) { border-right: none; }
+.fact-cell:nth-last-child(-n+4) { border-bottom: none; }
+
+.fact-cell dt {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-glacier);
+  margin-bottom: var(--space-3);
+}
+
+.fact-cell dd {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ===== LEAD ===== */
+.lead-section {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: var(--space-32) var(--space-10);
+  text-align: center;
+}
+
+.lead-text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  line-height: 1.45;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ===== LUKU 01 ===== */
+.chapter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+  padding-block: var(--space-10);
+}
+
+.chapter-image-left {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+.chapter-image-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chapter-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-glacier);
+  margin-bottom: var(--space-4);
+}
+
+.chapter-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-6);
+  color: var(--color-text);
+}
+
+.chapter-text p,
+.chapter-02-text p,
+.chapter-03-body p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.65;
+  color: var(--color-body);
+  margin: 0 0 var(--space-5);
+}
+
+/* ===== FULL-BLEED ===== */
+.full-bleed {
+  margin: var(--space-20) 0;
+  position: relative;
+}
+
+.full-bleed img {
+  width: 100%;
+  height: 78vh;
+  min-height: 460px;
+  object-fit: cover;
+}
+
+.full-bleed figcaption {
+  position: absolute;
+  bottom: var(--space-6);
+  left: var(--space-10);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  background: rgba(14,17,19,0.55);
+  backdrop-filter: blur(4px);
+  padding: var(--space-2) var(--space-4);
+}
+
+/* ===== LUKU 02 ===== */
+.chapter-02 {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-16);
+  align-items: start;
+  padding-block: var(--space-10);
+}
+
+.chapter-02-images {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--space-3);
+  height: 600px;
+}
+
+.ch02-img-main {
+  grid-row: span 2;
+  overflow: hidden;
+}
+
+.ch02-img-main img,
+.ch02-img-sm img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ch02-img-sm { overflow: hidden; }
+
+/* ===== LUKU 03 ===== */
+.chapter-03 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: start;
+  padding-block: var(--space-10);
+  overflow: clip;
+}
+
+.chapter-03-sticky {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-8));
+}
+
+.callout {
+  display: flex;
+  gap: var(--space-10);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-6);
+}
+
+.callout-item { display: flex; flex-direction: column; }
+
+.callout-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.callout-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-top: var(--space-2);
+}
+
+.pull-quote {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.55;
+  color: var(--color-text);
+  border-left: 2px solid var(--color-glacier);
+  padding-left: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+.ch03-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.ch03-images img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
+
+/* ===== ELOKUVA ===== */
+.film-section {
+  margin-top: var(--space-32);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-20);
+}
+
+.film-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+.film-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+  margin: var(--space-3) 0 0;
+}
+
+.film-sub {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  max-width: 22rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.film-embed-wrap {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+}
+
+.film-embed-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.72;
+}
+
+.film-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14,17,19,0.1), rgba(14,17,19,0.5));
+}
+
+.film-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.film-play-icon {
+  display: block;
+  width: 88px;
+  height: 88px;
+  border: 1.5px solid rgba(255,255,255,0.85);
+  border-radius: 50%;
+  background: rgba(14,17,19,0.3);
+  backdrop-filter: blur(2px);
+  position: relative;
+}
+
+.film-play-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 22px solid var(--color-text);
+}
+
+.film-play-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.film-play:hover .film-play-icon {
+  background: rgba(14,17,19,0.5);
+}
+
+.film-coming {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.film-poster-dim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+}
+
+.film-coming-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ===== GALLERIA ===== */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.gallery-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.gallery-section {
+  padding-top: var(--space-24);
+  padding-bottom: var(--space-24);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 220px;
+  gap: var(--space-3);
+}
+
+.gal-a { grid-column: span 5; grid-row: span 2; overflow: hidden; }
+.gal-b { grid-column: span 7; overflow: hidden; }
+.gal-c { grid-column: span 4; overflow: hidden; }
+.gal-d { grid-column: span 3; overflow: hidden; }
+
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.gallery-grid div:hover img {
+  transform: scale(1.04);
+}
+
+/* ===== SEURAAVA ===== */
+.next-section {
+  padding-bottom: var(--space-24);
+}
+
+.next-card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.next-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  opacity: 0.5;
+  transition: opacity 0.4s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.next-card:hover .next-img {
+  opacity: 0.65;
+  transform: scale(1.02);
+}
+
+.next-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 var(--space-12);
+  background: linear-gradient(90deg, rgba(14,17,19,0.85), rgba(14,17,19,0.35));
+}
+
+.next-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  line-height: 1;
+  margin-top: var(--space-4);
+}
+
+/* ===== RESPONSIIVISUUS ===== */
+@media (max-width: 900px) {
+  .fact-grid { grid-template-columns: repeat(2, 1fr); }
+  .fact-cell:nth-child(4n) { border-right: 1px solid var(--color-border); }
+  .fact-cell:nth-child(2n) { border-right: none; }
+  .fact-cell:nth-last-child(-n+4) { border-bottom: 1px solid var(--color-border); }
+  .fact-cell:nth-last-child(-n+2) { border-bottom: none; }
+
+  .chapter,
+  .chapter-02,
+  .chapter-03 { grid-template-columns: 1fr; }
+
+  .chapter-image-left { aspect-ratio: 16/9; }
+  .chapter-02-images { height: 400px; }
+  .chapter-03-sticky { position: static; }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 180px;
+  }
+  .gal-a { grid-column: span 1; grid-row: span 1; }
+  .gal-b { grid-column: span 1; }
+  .gal-c { grid-column: span 1; }
+  .gal-d { grid-column: span 1; }
+}
+
+@media (max-width: 600px) {
+  .fact-grid { grid-template-columns: 1fr 1fr; }
+  .ch03-images { grid-template-columns: 1fr; }
+  .film-header { flex-direction: column; align-items: flex-start; }
+  .callout { gap: var(--space-6); }
+}
+</style>

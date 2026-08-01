@@ -1,0 +1,392 @@
+---
+import Base from '@/layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import AdventureCard from '@/components/AdventureCard.astro';
+
+const allSeikkailut = await getCollection('seikkailut');
+const featuredOrder = [
+  'huippuvuoret-2024',
+  'eramaan-armoilla',
+  'jaamerelle',
+  'poyrisjarvi-selviytyminen',
+];
+const featuredSeikkailut = featuredOrder
+  .map(slug => allSeikkailut.find(s => s.slug === slug))
+  .filter(Boolean)
+  .slice(0, 4);
+
+// Live / seuraava retkikunta → nuotio-korostus
+const live =
+  allSeikkailut.find(s => s.data.kaynnissa) ??
+  allSeikkailut
+    .filter(s => s.data.vuosi >= new Date().getFullYear())
+    .sort((a, b) => a.data.vuosi - b.data.vuosi)[0];
+
+// Etusivun hero-kuvat — lisää kuvia public/kuvat/etusivu/-kansioon, ne poimitaan automaattisesti
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
+// Säädä kuvien asemointi ja zoom: src/data/hero-positions.json
+import heroPositionsRaw from '@/data/hero-positions.json';
+
+type HeroPos = { position?: string; scale?: number };
+const heroPositions: Record<string, HeroPos> = Object.fromEntries(
+  Object.entries(heroPositionsRaw as Record<string, HeroPos>).map(([k, v]) => [k.toLowerCase(), v])
+);
+
+const heroDir = join(process.cwd(), 'public/kuvat/etusivu');
+
+let heroImages: string[] = [];
+try {
+  heroImages = readdirSync(heroDir)
+    .filter(f => /\.(jpe?g|png|webp|avif)$/i.test(f))
+    .sort()
+    .map(f => `/kuvat/etusivu/${f}`);
+} catch {
+  // kansio puuttuu — ei hero-kuvia
+}
+
+const N = heroImages.length;
+const intervalS = 7;
+const transitionS = 1.5;
+const totalS = N * intervalS;
+const t1 = (transitionS / totalS * 100).toFixed(1);
+const t2 = ((intervalS - transitionS) / totalS * 100).toFixed(1);
+const t3 = (intervalS / totalS * 100).toFixed(1);
+
+const heroAnimCSS = N > 1 ? `
+@keyframes heroFade {
+  0%     { opacity: 0; }
+  ${t1}% { opacity: 1; }
+  ${t2}% { opacity: 1; }
+  ${t3}% { opacity: 0; }
+  100%   { opacity: 0; }
+}
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation-name: heroFade;
+  animation-duration: ${totalS}s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-img { animation: none; opacity: 0; }
+  .hero-img:first-child { opacity: 1; }
+}
+` : `
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+}
+`;
+---
+
+<Base
+  title="Sakke Raappana — Seikkailija ja elokuvantekijä Pohjolasta"
+  description="Sakke Raappana on suomalainen seikkailija ja dokumentaarinen elokuvantekijä. Arktisista retkikunnista selviytymisprojekteihin."
+>
+  {heroImages.length > 0 && <Fragment set:html={`<style>${heroAnimCSS}</style>`} />}
+
+  <!-- 1. HERO -->
+  <section class="hero" aria-label="Aloitusnäkymä">
+    {heroImages.length > 0 ? (
+      <div class="hero-bg" aria-hidden="true">
+        {heroImages.map((src, i) => (
+          <img
+            class="hero-img"
+            src={src}
+            alt=""
+            style={(() => {
+              const p = heroPositions[src.split('/').pop()!.toLowerCase()];
+              return [
+                N > 1 ? `animation-delay: ${(i === 0 ? -transitionS : i * intervalS - transitionS).toFixed(1)}s` : '',
+                p?.position ? `object-position: ${p.position}` : '',
+                p?.scale && p.scale !== 1 ? `transform: scale(${p.scale})` : '',
+              ].filter(Boolean).join('; ') || undefined;
+            })()}
+            loading={i === 0 ? 'eager' : 'lazy'}
+          />
+        ))}
+        <div class="hero-gradient"></div>
+      </div>
+    ) : (
+      <div class="hero-bg img-placeholder" aria-hidden="true">
+        <div class="hero-gradient"></div>
+      </div>
+    )}
+    <div class="hero-content container">
+      <p class="t-label hero-eyebrow">Sakke Raappana · 68°42′N 27°01′E</p>
+      <h1 class="t-display hero-title">
+        Pohjoisia<br />seikkailuja.
+      </h1>
+      <p class="hero-subtitle t-lead">
+        Todellisia koettelemuksia — <em>elokuviksi kerrottuina.</em>
+      </p>
+      <div class="hero-actions">
+        <a href="/seikkailut" class="btn btn-primary">Katso seikkailut</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- 2. LIVE / SEURAAVA RETKIKUNTA -->
+  {live && (
+    <section class="live-band" aria-labelledby="live-heading">
+      <div class="container live-inner">
+        <div class="live-text">
+          <span class="tag-live">Seuraava retkikunta</span>
+          <h2 class="t-heading-2 live-title" id="live-heading">{live.data.nimi}</h2>
+          <p class="t-body-sm live-meta">{live.data.vuosi} · {live.data.paikka}</p>
+        </div>
+        <a href={`/seikkailut/${live.slug}`} class="link-arrow live-cta">Seuraa →</a>
+      </div>
+    </section>
+  )}
+
+  <!-- 3. VALITUT SEIKKAILUT -->
+  <section class="section" aria-labelledby="seikkailut-heading">
+    <div class="container">
+      <div class="section-label">
+        <span class="t-label" id="seikkailut-heading">Seikkailut — valikoitu</span>
+      </div>
+      <div class="adventures-grid">
+        {featuredSeikkailut.map(s => (
+          <AdventureCard seikkailu={s} />
+        ))}
+      </div>
+      <div class="section-cta">
+        <a href="/seikkailut" class="btn btn-ghost">Kaikki seikkailut</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. HENKILÖESITTELY -->
+  <section class="section about-section" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">
+          <div class="about-image-placeholder img-placeholder" aria-hidden="true"></div>
+        </div>
+        <div class="about-text">
+          <p class="t-label" style="margin-bottom: var(--space-6);">Sakke</p>
+          <h2 class="t-heading-1" id="about-heading" style="margin-bottom: var(--space-8);">
+            Retkiltä ei vain palata.<br />
+            <em>Niistä tehdään elokuvia.</em>
+          </h2>
+          <p class="t-body" style="margin-bottom: var(--space-6);">
+            Olen suomalainen seikkailija, eränkävijä ja dokumentaarinen sisällöntuottaja.
+            Haen Pohjolan äärimmäisistä ympäristöistä — arktisista retkikunnista
+            selviytymisprojekteihin.
+          </p>
+          <p class="t-body" style="margin-bottom: var(--space-10);">
+            Erätaidot, suunnitelmallisuus ja tarinankerronta yhdistyvät jokaisessa
+            projektissa. Retket eivät ole pelkkiä suorituksia — ne ovat elokuvia
+            odottamassa syntymistään.
+          </p>
+          <a href="/sakke" class="btn btn-ghost">Lue lisää</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. YHTEISTYÖ-TEASER -->
+  <section class="section collab-section" aria-labelledby="collab-heading">
+    <div class="container">
+      <div class="collab-inner">
+        <p class="t-label" style="margin-bottom: var(--space-6);" id="collab-heading">Yhteistyö</p>
+        <h2 class="t-heading-2" style="max-width: 680px; margin-bottom: var(--space-6);">
+          Tuotannoille, brändeille ja medialle.
+        </h2>
+        <p class="t-body" style="max-width: 560px; margin-bottom: var(--space-10);">
+          Olen tehnyt yhteistyötä dokumentti- ja televisiotuotantojen, brändien
+          sekä tapahtumajärjestäjien kanssa. Yhteydenotto on helppoa.
+        </p>
+        <a href="/yhteistyo" class="btn btn-primary">Ota yhteyttä</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+/* HERO */
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 600px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--color-bg) 0%,
+    color-mix(in srgb, var(--color-bg) 40%, transparent) 45%,
+    color-mix(in srgb, var(--color-bg) 20%, transparent) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding-bottom: var(--section-gap);
+}
+
+.hero-eyebrow {
+  margin-bottom: var(--space-6);
+  color: var(--color-glacier);
+}
+
+.hero-title {
+  margin-bottom: var(--space-6);
+}
+
+.hero-subtitle {
+  max-width: 560px;
+  margin-bottom: var(--space-10);
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: var(--space-8);
+  right: var(--space-8);
+  z-index: 1;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--color-muted));
+  animation: scrollPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50%       { opacity: 0.8; transform: scaleY(1.2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-line { animation: none; }
+}
+
+/* Live band */
+.live-band {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding-block: var(--space-10);
+}
+
+.live-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.live-title {
+  margin-top: var(--space-3);
+}
+
+.live-meta {
+  margin-top: var(--space-2);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.live-cta {
+  flex-shrink: 0;
+  color: var(--color-fire);
+}
+
+/* Adventures grid */
+.adventures-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+}
+
+.section-cta {
+  margin-top: var(--space-12);
+  display: flex;
+  justify-content: center;
+}
+
+/* About */
+.about-section {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.about-image-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+}
+
+/* Collab */
+.collab-section {
+  border-top: 1px solid var(--color-border);
+}
+
+.collab-inner {
+  max-width: 760px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .adventures-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .about-image {
+    order: -1;
+  }
+
+  .films-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .live-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+}
+</style>
