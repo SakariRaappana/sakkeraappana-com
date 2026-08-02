@@ -74,6 +74,16 @@ import Base from '@/layouts/Base.astro';
       </aside>
     </div>
 
+    <!-- FULL-BLEED BREAK — jäätynyt kasvokuva -->
+    <div class="sakke-full-bleed">
+      <img
+        src="/kuvat/sakke/Screenshot 2026-08-02 at 14.50.08.jpg"
+        alt="Pakkasmyrsky. Huippuvuoret."
+        class="sakke-full-bleed-img"
+      />
+      <p class="sakke-full-bleed-caption">Lumimyrsky. Huippuvuoret, 2026.</p>
+    </div>
+
     <!-- POHJOISEN MITTAKAAVA -->
     <section class="prose-section section" style="border-top: 1px solid var(--color-border);">
       <h2 class="prose-heading t-heading-2">Pohjoisen mittakaava</h2>
@@ -131,6 +141,17 @@ import Base from '@/layouts/Base.astro';
       </div>
     </section>
 
+    <!-- EDITORIAL KUVA — luminen toimintakuva -->
+    <div class="sakke-full-bleed">
+      <img
+        src="/kuvat/sakke/DSCF2376.jpg"
+        alt="Ahkion kanssa lumisessa tunturimaisemassa"
+        class="sakke-full-bleed-img"
+        style="object-position: center 60%;"
+      />
+      <p class="sakke-full-bleed-caption">Huippuvuoret, 2026.</p>
+    </div>
+
     <!-- OSAAMINEN -->
     <section class="section" aria-labelledby="skills-heading" style="border-top: 1px solid var(--color-border);">
       <div class="section-label">
@@ -183,18 +204,48 @@ import Base from '@/layouts/Base.astro';
     </section>
 
     <!-- MIKSI LÄHDEN -->
-    <section class="prose-section section" style="border-top: 1px solid var(--color-border);">
+    <section class="prose-img-section section" style="border-top: 1px solid var(--color-border);">
       <h2 class="prose-heading t-heading-2">Miksi lähden?</h2>
-      <div class="prose-body">
-        <p class="t-body">
-          Seikkailu on minulle tapa tutkia luontoa ja itseäni. Elokuva antaa kokemukselle
-          toisen elämän, ja usein inspiroi seuraajiani.
-        </p>
-        <p class="t-body" style="margin-top: 1.5rem;">
-          Parhaimmillaan matka ei pääty siihen, kun saavun takaisin ihmisten ilmoille.
-          Se jatkuu tarinana, joka saa myös katsojan pysähtymään kartan äärelle ja
-          miettimään, mitä seuraavan vaaran takana voisi olla.
-        </p>
+      <div class="prose-img-body">
+        <div class="prose-img-text">
+          <p class="t-body">
+            Seikkailu on minulle tapa tutkia luontoa ja itseäni. Elokuva antaa kokemukselle
+            toisen elämän, ja usein inspiroi seuraajiani.
+          </p>
+          <p class="t-body" style="margin-top: 1.5rem;">
+            Parhaimmillaan matka ei pääty siihen, kun saavun takaisin ihmisten ilmoille.
+            Se jatkuu tarinana, joka saa myös katsojan pysähtymään kartan äärelle ja
+            miettimään, mitä seuraavan vaaran takana voisi olla.
+          </p>
+        </div>
+        <div class="prose-img-photo">
+          <img
+            src="/kuvat/sakke/Screenshot 2026-08-02 at 14.55.05.jpg"
+            alt="Jäätikköretkeily, Huippuvuoret"
+            class="prose-img-photo-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- MEDIA -->
+    <section class="section" aria-labelledby="media-heading" style="border-top: 1px solid var(--color-border);">
+      <div class="section-label">
+        <span class="t-label" id="media-heading">Media</span>
+      </div>
+      <div class="media-grid">
+        <a href="https://www.kauppalehti.fi/uutiset/a/3abde175-7fa0-42a0-ae84-73cd01ba257f" target="_blank" rel="noopener" class="media-item media-item--featured">
+          <span class="media-outlet">Kauppalehti</span>
+          <span class="media-desc">Henkilöjuttu seikkailija ja dokumentaristi Sakke Raappanasta</span>
+        </a>
+        <a href="https://yle.fi/a/74-20149370" target="_blank" rel="noopener" class="media-item">
+          <span class="media-outlet">Yle</span>
+          <span class="media-desc">Henkilöjuttu erän­käynnistä ja matkasta tunnetuksi seikkailijaksi</span>
+        </a>
+        <a href="/media" class="media-item">
+          <span class="media-outlet">Yle Areena, Iltalehti, Lapin Kansa…</span>
+          <span class="media-desc">Kaikki mediamaineet →</span>
+        </a>
       </div>
     </section>
 
@@ -348,6 +399,146 @@ import Base from '@/layouts/Base.astro';
 @media (max-width: 640px) {
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+}
+
+.media-item {
+  background: var(--color-bg);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: inherit;
+}
+
+a.media-item:hover .media-outlet {
+  color: var(--color-glacier);
+}
+
+.media-item--featured .media-outlet {
+  color: var(--color-glacier);
+}
+
+.media-outlet {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+
+.media-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+/* Full-bleed break */
+.sakke-full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: 55vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.sakke-full-bleed-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 75%;
+  display: block;
+}
+
+.sakke-full-bleed-caption {
+  position: absolute;
+  bottom: var(--space-6);
+  right: var(--space-8);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+}
+
+/* Pohjoisen mittakaava — kuva tekstin rinnalla */
+.prose-img-section {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.prose-img-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-10);
+  align-items: start;
+}
+
+.prose-img-photo-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Editorial photo — leveys 75% */
+.sakke-editorial-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sakke-editorial-photo-img {
+  width: 75%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
+
+.sakke-editorial-photo-caption {
+  width: 75%;
+  margin-top: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .prose-img-section {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .prose-img-body {
+    grid-template-columns: 1fr;
+  }
+
+  .prose-img-photo {
+    order: -1;
+  }
+
+  .sakke-editorial-photo-img {
+    width: 100%;
   }
 }
 </style>

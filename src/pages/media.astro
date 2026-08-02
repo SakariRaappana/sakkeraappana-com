@@ -42,6 +42,7 @@ import Base from '@/layouts/Base.astro';
   <section class="media-logos container">
     <p class="t-label media-logos-label">Esiintynyt mediassa</p>
     <div class="media-logos-strip">
+      <span class="logo-wordmark logo-kauppalehti">Kauppalehti</span>
       <span class="logo-wordmark logo-yle">Yle</span>
       <span class="logo-wordmark logo-iltalehti">Iltalehti</span>
       <span class="logo-wordmark logo-aamulehti">Aamulehti</span>
@@ -164,6 +165,24 @@ import Base from '@/layouts/Base.astro';
     <h2 class="t-heading-2 media-press-heading">Valikoidut nostot</h2>
 
     <div class="press-grid">
+
+      <!-- Kauppalehti 2026 — highlighted -->
+      <a
+        href="https://www.kauppalehti.fi/uutiset/a/3abde175-7fa0-42a0-ae84-73cd01ba257f"
+        target="_blank"
+        rel="noopener"
+        class="press-card press-card--highlight"
+      >
+        <div class="press-card-kicker">
+          <span class="press-outlet">Kauppalehti · 2026</span>
+          <span class="press-badge">Valtakunnallinen media</span>
+        </div>
+        <p class="press-title">Henkilöjuttu Sakke Raappanasta</p>
+        <p class="press-desc">
+          Kauppalehden henkilöjuttu seikkailija ja dokumentaarinen elokuvantekijä Sakke Raappanasta.
+        </p>
+        <span class="press-action">Lue juttu →</span>
+      </a>
 
       <!-- Aamulehti 2026 — highlighted -->
       <a
@@ -297,6 +316,21 @@ import Base from '@/layouts/Base.astro';
 
     </div>
   </section>
+
+  <!-- ═══════════════════════════════════════════════
+       ERÄMESSUT 2026 — EVENT FULL-BLEED
+       ═══════════════════════════════════════════════ -->
+  <div class="media-event-bleed">
+    <img
+      src="/kuvat/media/JUSSIJAUROLA_Eramessut2026_Perjantai-5.jpg"
+      alt="Sakke Raappana Riihimäen Erämessuilla 2026"
+      class="media-event-bleed-img"
+    />
+    <div class="media-event-bleed-overlay">
+      <p class="media-event-bleed-label t-label">Tapahtuma</p>
+      <h2 class="media-event-bleed-title">Riihimäen erämessut 2026</h2>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════════
        YLEISÖ OMISSA KANAVISSA
@@ -492,6 +526,7 @@ import Base from '@/layouts/Base.astro';
   hyphens: none;
 }
 
+.logo-kauppalehti { font-weight: 800; font-size: 1.6875rem; letter-spacing: -0.02em; }
 .logo-yle        { font-weight: 800; font-size: 1.875rem; letter-spacing: 0.02em; }
 .logo-iltalehti  { font-weight: 800; font-size: 1.8125rem; letter-spacing: -0.01em; }
 .logo-aamulehti  { font-weight: 700; font-size: 1.6875rem; letter-spacing: -0.01em; }
@@ -960,6 +995,53 @@ a.press-card:hover {
   .channels-footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* ── Erämessut event full-bleed ── */
+.media-event-bleed {
+  width: 100%;
+  height: 72vh;
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--section-gap);
+}
+
+.media-event-bleed-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.media-event-bleed-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-12);
+}
+
+.media-event-bleed-label {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: var(--space-2);
+}
+
+.media-event-bleed-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1.1;
+}
+
+@media (max-width: 640px) {
+  .media-event-bleed-overlay {
+    padding: var(--space-8) var(--space-6);
   }
 }
 </style>
