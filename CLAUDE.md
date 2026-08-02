@@ -17,8 +17,43 @@ lokaalinen kehitys → GitHub (main-branch) → Cloudflare Pages (automaattinen 
 
 - **Astro 5** — staattinen output (`output: 'static'`), ei SSR.
 - **Astro Content Collections** — tyypitetty sisältö Zod-skeemalla.
+- **@astrojs/sitemap** — generoi `sitemap-index.xml` automaattisesti buildissa.
 - Ei ylimääräisiä frontend-frameworkeja (React, Vue jne.) — puhdas Astro-komponentit.
 - TypeScript käytössä (strict-mode).
+
+## Hakukone- ja tekoälyoptimointi (SEO / AEO)
+
+**Tavoite:** parantaa sivuston löydettävyyttä hakukoneissa (Google) ja tekoälypohjaisissa hauissa (Google AI Overviews, ChatGPT, Perplexity) — ilman että sivujen näkyvää tekstisisältöä muutetaan.
+
+**Ehdoton periaate:** optimointi kohdistuu VAIN metadataan (meta-tagit, Open Graph, rakennedata, sitemap). Juttujen leipätekstiä, otsikoita tai ingressejä EI muokata hakukoneiden takia — sisältö säilyy kirjoittajan äänenä.
+
+**Kohdehakusanat** (sijoitetaan metadataan, ei tekstiin): vaellus, retkeily, vaellus Lapissa, Lappi, metsästys, hiihtovaellus, erävaellus — sekä yleisesti kaikki ulkoilmatoimintaan liittyvä. Perustuvat Saken YouTube-kanavan parhaiten toimineisiin hakutermeihin.
+
+### Käytetyt tekniikat
+
+**1. Meta-tagit — `src/layouts/Base.astro`**
+Keskitetty layoutiin, kaikki sivut perivät. Propseina `title`, `description`, `image`, `keywords`, `schema`, `ogType`.
+- `description`, `keywords`, `author`, `canonical`
+- Open Graph: `og:title/description/image/url/type/site_name/locale` — `og:image` rakennetaan absoluuttiseksi URL:ksi (`Astro.site`), koska some-skraperit vaativat sen. Oletuskuva: etusivun `hero-1.jpg`.
+- Twitter/X Card: `summary_large_image`
+- `ogType` — `'website'` (oletus) tai `'article'` (seikkailusivut).
+
+**2. Rakennedata (JSON-LD) — jaettu moduuli `src/lib/schema.ts`**
+- `personSchema` — Sakke henkilönä (`@id` `#person` sitoo entiteetit sivujen välillä). Kentät: nimi, kuva, ammatti, `knowsAbout` (= kohdehakusanat), `sameAs` (some-linkit). Käytössä etusivulla ja `/sakke`.
+- `websiteSchema` — `WebSite`-entiteetti, etusivulla.
+- `videoSchema(...)` — `VideoObject` seikkailun elokuvalle (thumbnail YouTubesta, `keywords`, tekijäviittaus `#person`). Näkyy Googlen video-rich-resultina. Käytössä seikkailusivuilla joissa on `elokuva`-kenttä.
+- Schema välitetään sivulta layoutille `schema`-propsina (yksi objekti tai taulukko).
+
+**3. Sitemap ja robots.txt**
+- `@astrojs/sitemap` konfiguroituna `astro.config.mjs`:ssä → `sitemap-index.xml` buildiin.
+- `public/robots.txt` — sallii kaiken + `Sitemap:`-direktiivi.
+
+### Kun lisäät uuden sivun tai seikkailun
+
+- Anna aina `image`-props (seikkailuilla `kuva`-frontmatter-kenttä) → oikea some-esikatselukuva.
+- Seikkailusivut: `ogType="article"`. Jos videolla → lisää `videoSchema(...)` ja välitä se `schema`-propsina.
+- Uudet hakusanat: lisää `src/lib/schema.ts`:n `AIHEET`-taulukkoon ja/tai `Base.astro`:n `keywords`-oletukseen — EI leipätekstiin.
+- Kohdehakusanoja ei tarvitse toistaa jokaisella sivulla erikseen; `keywords`-oletus kattaa ne globaalisti.
 
 ## Design system — Leveyspiiri
 
