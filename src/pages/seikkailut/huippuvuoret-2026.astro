@@ -5,12 +5,12 @@ import { getEntry } from 'astro:content';
 const entry = await getEntry('seikkailut', 'huippuvuoret-2026');
 if (!entry) throw new Error('Seikkailua ei löydy');
 
-const { nimi, paikka, vuosi, tiivistelma } = entry.data;
+const { nimi, paikka, vuosi, tiivistelma, kuva } = entry.data;
 
 const IMG = '/kuvat/seikkailut/Huippuvuoret/Kuvat';
 ---
 
-<Base title={`${nimi} — Sakke Raappana`} description={tiivistelma}>
+<Base title={`${nimi} — Sakke Raappana`} description={tiivistelma} image={kuva} ogType="article">
 
   <!-- ===== HERO ===== -->
   <section class="hero">
@@ -137,7 +137,7 @@ const IMG = '/kuvat/seikkailut/Huippuvuoret/Kuvat';
     <div class="chapter-03-body">
       <p>Arktinen taival ei ollut yksilösuoritus. Jokaisella retkikunnan jäsenellä oli oma vastuualueensa jäätikköturvallisuudesta ensiapuun, fyysiseen valmistautumiseen ja jääkarhuturvallisuuteen.</p>
       <blockquote class="pull-quote">Keskellä maisemaa, jossa ihminen ei ole ravintoketjun huipulla, ryhmän yhteinen toimintamalli on ainoa vakuutus.</blockquote>
-      <p>Samuli Raappana toimi retkikunnan toisena kuvaajana ja stillkuvaajana. Yhdessä dokumentoimme matkan harjoittelusta Huippuvuorten jäätiköille — kaikki materiaali pitkää dokumenttielokuvaa varten.</p>
+      <p><a href="https://tuuliajo.fi/" target="_blank" rel="noopener">Samuli Raappana</a> toimi retkikunnan toisena kuvaajana ja stillkuvaajana. Yhdessä dokumentoimme matkan harjoittelusta Huippuvuorten jäätiköille — kaikki materiaali pitkää dokumenttielokuvaa varten.</p>
       <div class="ch03-images">
         <img src={`${IMG}/Huippuvuoret_hiihtoa.jpg`} alt="Hiihtoa jäätiköllä" />
         <img src={`${IMG}/Huippuvuoret_jaatikko.jpg`} alt="Jäätikkömaailma" />
@@ -181,7 +181,7 @@ const IMG = '/kuvat/seikkailut/Huippuvuoret/Kuvat';
       </div>
       <div class="credit-cell">
         <dt>Toinen kuvaaja ja stillkuvat</dt>
-        <dd>Samuli Raappana</dd>
+        <dd>Samuli Raappana – <a href="https://tuuliajo.fi/" target="_blank" rel="noopener">Tuuliajo.fi</a></dd>
       </div>
       <div class="credit-cell">
         <dt>Alkuperäinen musiikki</dt>
@@ -192,7 +192,7 @@ const IMG = '/kuvat/seikkailut/Huippuvuoret/Kuvat';
         <dd>Mikko Suuronen · Agalma Films</dd>
       </div>
     </div>
-    <p class="credits-photo container-wide">Kaikki artikkelin valokuvat: Samuli Raappana</p>
+    <p class="credits-photo container-wide">Kaikki artikkelin valokuvat: <a href="https://tuuliajo.fi/" target="_blank" rel="noopener">Samuli Raappana</a></p>
   </section>
 
   <!-- ===== ELOKUVA ===== -->

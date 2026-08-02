@@ -1,13 +1,14 @@
 ---
 import Base from '@/layouts/Base.astro';
 import { getEntry } from 'astro:content';
+import { videoSchema } from '@/lib/schema';
 
 const entry = await getEntry('seikkailut', 'poyrisjarvi-selviytyminen');
 if (!entry) throw new Error('Seikkailua ei löydy');
 
 const {
   nimi, paikka, vuosi, kesto, km, tiivistelma, elokuva,
-  osallistujat, lahtopaikka, energiansaanti, painonmuutos,
+  osallistujat, lahtopaikka, energiansaanti, painonmuutos, kuva,
 } = entry.data;
 
 const IMG = '/kuvat/seikkailut/poyrisjarvi-selviytyminen/kuvat';
@@ -18,9 +19,12 @@ function getYouTubeId(url: string): string {
   return m ? m[1] : '';
 }
 const youtubeId = elokuva ? getYouTubeId(elokuva) : '';
+const vSchema = elokuva
+  ? videoSchema({ nimi, kuvaus: tiivistelma, url: elokuva, thumbnail: kuva, vuosi })
+  : null;
 ---
 
-<Base title={`${nimi} — Sakke Raappana`} description={tiivistelma}>
+<Base title={`${nimi} — Sakke Raappana`} description={tiivistelma} image={kuva} ogType="article" schema={vSchema ?? undefined}>
 
   <!-- ===== HERO ===== -->
   <section class="hero">
@@ -816,7 +820,10 @@ const youtubeId = elokuva ? getYouTubeId(elokuva) : '';
 }
 
 @media (max-width: 600px) {
-  .fact-grid { grid-template-columns: 1fr 1fr; }
+  .container-wide { padding-inline: var(--space-5); }
+  .fact-cell { padding: var(--space-5) var(--space-4); }
+  .chapter-02-images { grid-template-columns: 1fr; height: auto; }
+  .chapter-02-images img { aspect-ratio: 16/9; height: auto; }
   .ch03-images { grid-template-columns: 1fr; }
   .film-header { flex-direction: column; align-items: flex-start; }
 }

@@ -2,6 +2,7 @@
 import Base from '@/layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import AdventureCard from '@/components/AdventureCard.astro';
+import { personSchema, websiteSchema } from '@/lib/schema';
 
 const allSeikkailut = await getCollection('seikkailut');
 const featuredOrder = [
@@ -92,6 +93,7 @@ const heroAnimCSS = N > 1 ? `
 <Base
   title="Sakke Raappana — Seikkailija ja elokuvantekijä Pohjolasta"
   description="Sakke Raappana on suomalainen seikkailija ja dokumentaarinen elokuvantekijä. Arktisista retkikunnista selviytymisprojekteihin."
+  schema={[personSchema, websiteSchema]}
 >
   {heroImages.length > 0 && <Fragment set:html={`<style>${heroAnimCSS}</style>`} />}
 
@@ -435,6 +437,10 @@ const heroAnimCSS = N > 1 ? `
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-4);
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr 1fr;
   }
 }
 </style>

@@ -290,7 +290,14 @@ import Base from '@/layouts/Base.astro';
   <!-- ═══════════════════════════════════════════════
        PODCAST — Metsä-Suomi / Yle Radio Suomi
        ═══════════════════════════════════════════════ -->
-  <section class="media-podcast container">
+  <section class="media-podcast">
+    <img
+      src="/kuvat/media/radiossa.jpg"
+      alt="Sakke Raappana radiostudiossa"
+      class="media-podcast-bg"
+    />
+    <div class="media-podcast-overlay"></div>
+    <div class="media-podcast-content container">
     <div class="section-label">
       <span class="t-label">Podcast</span>
     </div>
@@ -324,6 +331,7 @@ import Base from '@/layouts/Base.astro';
           <span class="podcast-play-dur">Avautuu uudessa välilehdessä →</span>
         </div>
       </a>
+    </div>
     </div>
   </section>
 
@@ -965,7 +973,41 @@ a.press-card:hover {
    PODCAST
    ═══════════════════════════════════════════════ */
 .media-podcast {
-  padding-top: var(--section-gap);
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--section-gap);
+  min-height: 48vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.media-podcast-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 33%;
+  opacity: 0.45;
+}
+
+.media-podcast-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 17, 19, 0.25) 0%,
+    rgba(14, 17, 19, 0.55) 50%,
+    rgba(14, 17, 19, 0.88) 100%
+  );
+}
+
+.media-podcast-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
 }
 
 .podcast-inner {

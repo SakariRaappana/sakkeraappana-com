@@ -233,6 +233,10 @@ ul, ol {
 /* ═══════════════════════════════════════════════════════════
    Layout-utiliteetit
    ═══════════════════════════════════════════════════════════ */
+html {
+  overflow-x: hidden;
+}
+
 .container {
   width: 100%;
   max-width: var(--max-width);

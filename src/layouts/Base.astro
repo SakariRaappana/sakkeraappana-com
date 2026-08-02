@@ -8,16 +8,25 @@ interface Props {
   description?: string;
   image?: string;
   theme?: 'dark' | 'light';
+  keywords?: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  ogType?: 'website' | 'article';
 }
 
 const {
   title,
   description = 'Sakke Raappana — seikkailija ja elokuvantekijä Pohjolasta.',
-  image = '/assets/images/og-default.jpg',
+  image = '/kuvat/etusivu/hero-1.jpg',
   theme = 'dark',
+  keywords = 'vaellus, retkeily, vaellus Lapissa, Lappi, metsästys, hiihtovaellus, erävaellus, seikkailu, dokumenttielokuva, selviytyminen',
+  schema,
+  ogType = 'website',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// og:image on absoluuttinen — some-skraperit vaativat täyden URL:n
+const ogImageURL = new URL(image, Astro.site);
+const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 
 <!doctype html>
@@ -26,14 +35,29 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Sakke Raappana" />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:site_name" content="Sakke Raappana" />
+    <meta property="og:locale" content="fi_FI" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- Rakennedata (JSON-LD) -->
+    {schemas.map(s => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
 
     <!-- Fonts · Leveyspiiri: Archivo (display) · Newsreader (leipä) · IBM Plex Mono (data) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

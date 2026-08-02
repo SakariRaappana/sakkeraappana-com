@@ -5,12 +5,12 @@ import { getEntry } from 'astro:content';
 const entry = await getEntry('seikkailut', 'eramaan-armoilla');
 if (!entry) throw new Error('Seikkailua ei löydy');
 
-const { nimi, paikka, vuosi, kesto, km, tiivistelma } = entry.data;
+const { nimi, paikka, vuosi, kesto, km, tiivistelma, kuva } = entry.data;
 
 const IMG = '/kuvat/seikkailut/eramaan-armoilla/kuvat';
 ---
 
-<Base title={`${nimi} — Sakke Raappana`} description={tiivistelma}>
+<Base title={`${nimi} — Sakke Raappana`} description={tiivistelma} image={kuva} ogType="article">
 
   <!-- ===== HERO ===== -->
   <section class="hero">
