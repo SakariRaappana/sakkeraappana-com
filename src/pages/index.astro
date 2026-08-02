@@ -16,9 +16,10 @@ const featuredSeikkailut = featuredOrder
   .filter(Boolean)
   .slice(0, 4);
 
-// Live / seuraava retkikunta → nuotio-korostus
+// Live / seuraava projekti → nuotio-korostus
 const live =
   allSeikkailut.find(s => s.data.kaynnissa) ??
+  allSeikkailut.find(s => s.slug === 'huippuvuoret-2026') ??
   allSeikkailut
     .filter(s => s.data.vuosi >= new Date().getFullYear())
     .sort((a, b) => a.data.vuosi - b.data.vuosi)[0];
@@ -156,11 +157,11 @@ const heroAnimCSS = N > 1 ? `
     <section class="live-band" aria-labelledby="live-heading">
       <div class="container live-inner">
         <div class="live-text">
-          <span class="tag-live">Seuraava retkikunta</span>
+          <span class="tag-live">Elokuva julkaistaan joulukuussa 2026</span>
           <h2 class="t-heading-2 live-title" id="live-heading">{live.data.nimi}</h2>
           <p class="t-body-sm live-meta">{live.data.vuosi} · {live.data.paikka}</p>
         </div>
-        <a href={`/seikkailut/${live.slug}`} class="link-arrow live-cta">Seuraa →</a>
+        <a href={`/seikkailut/${live.slug}`} class="link-arrow live-cta">Tutustu projektiin →</a>
       </div>
     </section>
   )}
