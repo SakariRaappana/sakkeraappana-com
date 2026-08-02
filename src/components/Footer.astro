@@ -95,6 +95,8 @@ const socials = [
   color: var(--color-text);
   margin-bottom: var(--space-6);
   transition: color 0.2s;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .footer-email:hover {
@@ -103,6 +105,7 @@ const socials = [
 
 .footer-socials {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-6);
 }
 
