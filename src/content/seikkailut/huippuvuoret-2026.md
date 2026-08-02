@@ -2,7 +2,7 @@
 nimi: "Arktinen taival – Huippuvuoret"
 paikka: "Huippuvuoret, Norja"
 vuosi: 2026
-kesto: "17 vuorokautta"
+kesto: "17 vrk"
 tiivistelma: "Kuuden suomalaisen arktinen retkikunta Huippuvuorten jäätiköille ja kohti saariston korkeinta huippua. Elokuva saa ensi-iltansa joulukuussa 2026."
 kuva: "/kuvat/seikkailut/Huippuvuoret/Kuvat/hero-2.jpg"
 osallistujat: ["Sakke Raappana", "Samuli Raappana"]

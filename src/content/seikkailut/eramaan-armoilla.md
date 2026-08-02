@@ -2,7 +2,7 @@
 nimi: "Erämaan armoilla"
 paikka: "Vätsäri, Suomi"
 vuosi: 2026
-kesto: "useita päiviä"
+kesto: "useita vrk"
 km: 50
 tiivistelma: "Vesitasolentokone jätti minut yksin keskelle Vätsärin erämaata. Minun oli löydettävä pois ilman karttaa, kompassia, ruokaa, telttaa tai makuupussia."
 kuva: "/kuvat/seikkailut/eramaan-armoilla/kuvat/EA_06_kavely.jpg"

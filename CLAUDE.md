@@ -44,9 +44,15 @@ Keskitetty layoutiin, kaikki sivut perivät. Propseina `title`, `description`, `
 - `videoSchema(...)` — `VideoObject` seikkailun elokuvalle (thumbnail YouTubesta, `keywords`, tekijäviittaus `#person`). Näkyy Googlen video-rich-resultina. Käytössä seikkailusivuilla joissa on `elokuva`-kenttä.
 - Schema välitetään sivulta layoutille `schema`-propsina (yksi objekti tai taulukko).
 
-**3. Sitemap ja robots.txt**
+**Entiteettien erottelu (Sakke = Sakari Raappana):** `personSchema` sisältää `alternateName: "Sakari Raappana"`, `givenName`/`familyName` ja `disambiguatingDescription`, jotka sitovat nimiversiot samaksi henkilöksi ja erottavat samannimisestä säveltäjästä (s. 1966). Näkyvässä sisällössä /sakke-sivun bio alkaa "Olen Sakari ”Sakke” Raappana, …" — ainoa hakukone-erottelun vuoksi tehty näkyvän tekstin lisäys (Saken erikseen hyväksymä).
+
+**3. Sitemap, robots.txt ja llms.txt**
 - `@astrojs/sitemap` konfiguroituna `astro.config.mjs`:ssä → `sitemap-index.xml` buildiin.
-- `public/robots.txt` — sallii kaiken + `Sitemap:`-direktiivi.
+- `public/robots.txt` — sallii kaiken (`User-agent: *`) + `Sitemap:`-direktiivi. Tämä sallii myös kaikki AI-crawlerit (OAI-SearchBot, Claude-SearchBot, GPTBot, Google-Extended). **Älä lisää per-botti-lohkoja** — ne korvaisivat wildcard-säännön ja voisivat vahingossa rajoittaa.
+- `public/llms.txt` — tiivis, linkkivetoinen sisältöhakemisto LLM:ille. **Kun lisäät uuden seikkailun, lisää sille rivi myös tänne.** Pidä tiiviinä (ei täysi sisältökaato).
+
+**4. Kuvien alt-tekstit**
+Jokaisella sisältökuvalla on kuvaileva alt-teksti (ei pelkkää "Image" eikä tyhjää). Käytäntö: kuvaa **todellinen kuva, henkilö ja paikka** — esim. "Sakke Raappana kävelee yksin Vätsärin erämaassa Lapissa". Mainitse paikka (Huippuvuoret, Vätsärin/Pöyrisjärven/Hammastunturin erämaa) ja Suomen Lapin kuvissa sana **Lappi** (haettu retkeilytermi). Älä luettele avainsanoja. Etusivun hero-karusellin alt-tekstit ovat `index.astro`:n `heroAlt`-kartassa (avain = tiedostonimi pienellä); uudelle hero-kuvalle lisää rivi sinne.
 
 ### Kun lisäät uuden sivun tai seikkailun
 

@@ -1,0 +1,50 @@
+---
+import Base from '@/layouts/Base.astro';
+---
+
+<Base
+  title="Sivua ei löytynyt — Sakke Raappana"
+  description="Etsimääsi sivua ei löytynyt. Palaa etusivulle tai selaa seikkailuja."
+>
+  <section class="notfound container">
+    <p class="t-label notfound-code">Virhe 404</p>
+    <h1 class="t-display">Reitti katkesi.</h1>
+    <p class="t-body notfound-lead">
+      Etsimääsi sivua ei löytynyt. Se on ehkä siirretty tai poistettu.
+    </p>
+    <div class="notfound-actions">
+      <a href="/" class="btn btn-primary">Etusivulle</a>
+      <a href="/seikkailut" class="btn btn-ghost">Selaa seikkailuja</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+.notfound {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+
+.notfound-code {
+  color: var(--color-glacier);
+  margin-bottom: var(--space-6);
+}
+
+.notfound-lead {
+  margin-top: var(--space-6);
+  max-width: 40rem;
+  color: var(--color-muted);
+}
+
+.notfound-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-10);
+}
+</style>

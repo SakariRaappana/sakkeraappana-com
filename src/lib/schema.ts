@@ -24,11 +24,19 @@ export const personSchema = {
   '@type': 'Person',
   '@id': `${SITE}/#person`,
   name: 'Sakke Raappana',
+  // Virallinen etunimi — moni ulkoinen lähde käyttää muotoa "Sakari Raappana".
+  // Sitoo nimiversiot samaksi entiteetiksi ja erottaa samannimisestä säveltäjästä.
+  alternateName: 'Sakari Raappana',
+  givenName: 'Sakari',
+  familyName: 'Raappana',
   url: SITE,
   image: `${SITE}/kuvat/sakke/sakke_raappana_Sarek.webp`,
   jobTitle: 'Seikkailija ja dokumentaarinen elokuvantekijä',
   description:
     'Suomalainen seikkailija ja dokumentaarinen elokuvantekijä. Arktisia retkikuntia, hiihtovaelluksia ja selviytymisprojekteja Pohjolan erämaissa.',
+  // Erottava kuvaus — auttaa konetta erottamaan säveltäjä Sakari Raappanasta (s. 1966).
+  disambiguatingDescription:
+    'Seikkailija, retkikunnanjohtaja ja dokumentaarinen elokuvantekijä — ei sama henkilö kuin samanniminen säveltäjä.',
   nationality: { '@type': 'Country', name: 'Suomi' },
   knowsAbout: AIHEET,
   sameAs: [

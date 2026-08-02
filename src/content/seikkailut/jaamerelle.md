@@ -2,7 +2,7 @@
 nimi: "Jäämerelle"
 paikka: "Lappi / Pohjois-Norja"
 vuosi: 2024
-kesto: "13 vuorokautta"
+kesto: "13 vrk"
 km: 426
 tiivistelma: "426 kilometrin kanoottivaellus Kalmankaltiosta Jäämerelle kolmen erämaan ja kahden vedenjakajan halki."
 kuva: "/kuvat/seikkailut/Jaamerelle/kuvat/Jaameri_1.jpg"

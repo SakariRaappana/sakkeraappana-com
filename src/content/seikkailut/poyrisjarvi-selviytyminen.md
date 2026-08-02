@@ -2,7 +2,7 @@
 nimi: "7 päivää ilman ruokaa"
 paikka: "Pöyrisjärven erämaa, Suomi"
 vuosi: 2024
-kesto: "7 päivää"
+kesto: "7 vrk"
 km: 75
 tiivistelma: "Seitsemän päivän vaellus Pöyrisjärven erämaassa ilman mukana kannettua ruokaa. Luonto tarjosi lähinnä haukea, marjoja ja murto-osan tarvitsemastamme energiasta."
 kuva: "/kuvat/seikkailut/poyrisjarvi-selviytyminen/kuvat/Poyrisjarvi_1.jpg"

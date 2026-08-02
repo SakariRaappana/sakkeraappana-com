@@ -46,6 +46,16 @@ try {
   // kansio puuttuu — ei hero-kuvia
 }
 
+// Alt-tekstit hero-kuville — avain = tiedostonimi pienellä. Kuvaa todellinen kuva, henkilö ja paikka.
+const heroAlt: Record<string, string> = {
+  'hero-1.jpg': 'Kolme hiihtovaeltajaa nousee lumista rinnettä kohti jäätikköä ja lumihuippuja Huippuvuorilla',
+  'hero-2.jpg': 'Sakke Raappana kuvaa käsivakaajalla packraft-kanootin vieressä Lapin erämaassa',
+  'hero-3.jpg': 'Topografinen kartta, johon on merkitty punainen reittiviiva korkeuskäyrien halki — vaelluksen reittisuunnittelua',
+  'hero-4.jpg': 'Sakke Raappana pitelee saaliskaloja järven rannalla Pöyrisjärven erämaassa Lapissa',
+  'hero-6.jpg': 'Punaiset retkiteltat lumisella arktisella tasangolla Huippuvuorilla, Suomen lippu ja Arktinen taival -lippu liehumassa',
+  'hero-7.jpg': 'Topografinen kartta Huippuvuorilta punaisella reittiviivalla, Rabotbreen-jäätikkö merkittynä',
+};
+
 const N = heroImages.length;
 const intervalS = 7;
 const transitionS = 1.5;
@@ -105,7 +115,7 @@ const heroAnimCSS = N > 1 ? `
           <img
             class="hero-img"
             src={src}
-            alt=""
+            alt={heroAlt[src.split('/').pop()!.toLowerCase()] ?? ''}
             style={(() => {
               const p = heroPositions[src.split('/').pop()!.toLowerCase()];
               return [
@@ -203,11 +213,11 @@ const heroAnimCSS = N > 1 ? `
               <dd class="about-stat-label">Kanootilla Jäämerelle</dd>
             </div>
             <div class="about-stat">
-              <dt class="about-stat-value">17 VRK</dt>
+              <dt class="about-stat-value">17 vrk</dt>
               <dd class="about-stat-label">Huippuvuorten jäätiköillä</dd>
             </div>
             <div class="about-stat">
-              <dt class="about-stat-value">7 VRK</dt>
+              <dt class="about-stat-value">7 vrk</dt>
               <dd class="about-stat-label">Erämaassa ilman ruokaa</dd>
             </div>
           </dl>
