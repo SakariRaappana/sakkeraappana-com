@@ -24,7 +24,7 @@ const useCases = [
     numero: '03',
     otsikko: 'Seikkailu- ja retkikuntaprojektit',
     kuvaus: [
-      'Suunnittelen ja johdan pitkäkestoisia retkikuntia pohjoisissa ja syrjäisissä ympäristöissä.',
+      'Suunnittelen ja toteutan pitkäkestoisia seikkailuja pohjoisissa ja syrjäisissä ympäristöissä.',
       'Voin rakentaa uuden seikkailukonseptin yhdessä tuotantoyhtiön tai kumppanibrändin kanssa tai liittää yhteistyön osaksi jo suunnitteilla olevaa retkikuntaa.',
       'Hankkeisiin voi sisältyä reittitutkimusta, ryhmän kokoamista, logistiikkaa, turvallisuussuunnittelua, harjoittelua, kuvaamista ja monikanavaista julkaisua.',
     ],
@@ -75,18 +75,20 @@ const phases = [
     <div class="container">
       <p class="t-label" style="margin-bottom: 1.5rem;">Yhteistyö</p>
       <h1 class="t-display">Seikkailuja. Tarinoita.<br /><em>Yhteistyötä, jolla on<br />todellinen ympäristö.</em></h1>
-      <div class="page-hero-sub">
-        <p class="t-body">
-          Teen yhteistyötä brändien, tuotantoyhtiöiden, medioiden ja tapahtumajärjestäjien kanssa. Rakennan sisältöjä ja hankkeita, joissa tuotteet, ihmiset ja tarinat ovat osa aitoa seikkailua – eivät irrallinen mainoskatko sen keskellä.
-        </p>
-        <p class="t-body" style="margin-top: 1.25rem;">
-          Parhaat yhteistyöt alkavat jo ennen lähtöä. Ne kulkevat mukana valmistautumisessa, varsinaisella retkellä ja myöhemmin syntyvissä elokuvissa, valokuvissa, sosiaalisen median sisällöissä ja tapahtumissa.
-        </p>
-      </div>
     </div>
   </div>
 
   <div class="container">
+
+    <!-- INTRO -->
+    <section class="section intro-section">
+      <p class="t-body intro-p">
+        Teen yhteistyötä brändien, tuotantoyhtiöiden, medioiden ja tapahtumajärjestäjien kanssa. Rakennan sisältöjä ja hankkeita, joissa tuotteet, ihmiset ja tarinat ovat osa aitoa seikkailua – eivät irrallinen mainoskatko sen keskellä.
+      </p>
+      <p class="t-body intro-p">
+        Parhaat yhteistyöt alkavat jo ennen lähtöä. Ne kulkevat mukana valmistautumisessa, varsinaisella retkellä ja myöhemmin syntyvissä elokuvissa, valokuvissa, sosiaalisen median sisällöissä ja tapahtumissa.
+      </p>
+    </section>
 
     <!-- KÄYTTÖTAPAUKSET -->
     <section class="section" aria-labelledby="usecases-heading">
@@ -240,9 +242,14 @@ const phases = [
   position: relative;
 }
 
-.page-hero-sub {
-  max-width: 600px;
-  margin-top: var(--space-8);
+/* Intro */
+.intro-section {
+  max-width: 52rem;
+  border-bottom: none;
+}
+
+.intro-p + .intro-p {
+  margin-top: 1.25rem;
 }
 
 /* Use cases — stacked list layout */
