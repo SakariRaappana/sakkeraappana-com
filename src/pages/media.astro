@@ -140,17 +140,20 @@ import Base from '@/layouts/Base.astro';
         <p class="media-tv-body">
           Erän­kävi­jät-sarjaa varten minut jätettiin vesitasolentokoneella keskelle Vätsärin erä­maata ilman karttaa, kompassia, ruokaa, telttaa tai makuupussia.
         </p>
-        <p class="media-tv-body">
-          Seikkailu nähdään sarjan 11. tuotantokaudella.
-        </p>
+        <div class="media-tv-premiere">
+          <span class="media-tv-premiere-label">Televisioesitys</span>
+          <span class="media-tv-premiere-date">Lokakuu 2026</span>
+          <span class="media-tv-premiere-channel">Yle TV1 · 11. kausi</span>
+        </div>
         <a
           href="https://areena.yle.fi/1-3436275"
           target="_blank"
           rel="noopener"
           class="btn btn-primary media-tv-cta"
         >
-          Katso Yle Areenassa →
+          Yle Areena →
         </a>
+        <p class="media-tv-areena-note">Jaksot ilmestyvät Areenaan kauden alkaessa lokakuussa.</p>
       </div>
     </div>
   </section>
@@ -744,8 +747,54 @@ a.logo-wordmark:hover {
   color: #D9DAD8;
 }
 
+.media-tv-premiere {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--color-fire);
+  background: rgba(210, 105, 60, 0.08);
+}
+
+.media-tv-premiere-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-fire);
+  flex-shrink: 0;
+}
+
+.media-tv-premiere-date {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.375rem;
+  letter-spacing: -0.01em;
+  color: #F3F1EA;
+  flex-shrink: 0;
+}
+
+.media-tv-premiere-channel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9A9FA3;
+}
+
 .media-tv-cta {
-  margin-top: 2rem;
+  margin-top: 1.75rem;
+}
+
+.media-tv-areena-note {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: #9A9FA3;
+  margin-top: 0.75rem;
 }
 
 /* ═══════════════════════════════════════════════

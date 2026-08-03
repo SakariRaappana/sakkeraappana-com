@@ -5,7 +5,7 @@ import { getEntry } from 'astro:content';
 const entry = await getEntry('seikkailut', 'eramaan-armoilla');
 if (!entry) throw new Error('Seikkailua ei löydy');
 
-const { nimi, paikka, vuosi, kesto, km, tiivistelma, kuva } = entry.data;
+const { nimi, paikka, vuosi, tiivistelma, kuva } = entry.data;
 
 const IMG = '/kuvat/seikkailut/eramaan-armoilla/kuvat';
 ---
@@ -14,7 +14,7 @@ const IMG = '/kuvat/seikkailut/eramaan-armoilla/kuvat';
 
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <img class="hero-img" src={`${IMG}/EA_06_kavely.jpg`} alt="Sakke kävelee yksin Vätsärin erämaassa" />
+    <img class="hero-img" src={`${IMG}/EA_06_kavely.jpg`} alt="Sakke Raappana kävelee yksin Vätsärin erämaassa Lapissa" />
     <div class="hero-gradient"></div>
     <div class="hero-content container">
       <div class="hero-meta">
@@ -23,162 +23,18 @@ const IMG = '/kuvat/seikkailut/eramaan-armoilla/kuvat';
         <span>{vuosi}</span>
         <span class="hero-meta-line"></span>
         <span class="hero-meta-place">{paikka}</span>
-        <span class="hero-meta-line"></span>
-        <span class="t-mono">69°23′N&nbsp;&nbsp;29°04′E</span>
       </div>
       <h1 class="hero-title">{nimi}</h1>
       <p class="hero-lead">Yksin Vätsärissä ilman karttaa, kompassia, ruokaa tai suojaa.</p>
     </div>
-    <div class="hero-scroll">VIERITÄ ↓</div>
   </section>
 
-  <!-- ===== FAKTAJUOVA ===== -->
-  <section class="fact-strip">
-    <div class="fact-grid container-wide">
-      <div class="fact-cell">
-        <dt>Sijainti</dt>
-        <dd>Vätsärin erämaa</dd>
-      </div>
-      <div class="fact-cell">
-        <dt>Toteutus</dt>
-        <dd>Yksin</dd>
-      </div>
-      <div class="fact-cell">
-        <dt>Matka</dt>
-        <dd>Yli 50 KM</dd>
-      </div>
-      <div class="fact-cell">
-        <dt>Saapuminen</dt>
-        <dd>Vesitasolentokoneella</dd>
-      </div>
-      <div class="fact-cell">
-        <dt>Navigointi</dt>
-        <dd>Ilman karttaa ja kompassia</dd>
-      </div>
-      <div class="fact-cell">
-        <dt>Ravinto</dt>
-        <dd>Ei mukana ruokaa</dd>
-      </div>
-      <div class="fact-cell">
-        <dt>Majoite</dt>
-        <dd>Ei telttaa</dd>
-      </div>
-      <div class="fact-cell">
-        <dt>Tuotanto</dt>
-        <dd>Eränkävijät · 11. kausi</dd>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== LEAD ===== -->
-  <section class="lead-section">
-    <p class="lead-text">Kun kone katosi horisonttiin, jäljelle jäivät hiljaisuus, tuntematon maasto ja yksi tehtävä: löytää omin avuin takaisin ihmisten ilmoille.</p>
-  </section>
-
-  <!-- ===== LUKU 01 ===== -->
-  <section class="chapter container-wide">
-    <div class="chapter-image-left">
-      <img src={`${IMG}/EA_07_lentokone.jpg`} alt="Sakke vesitasolentokoneessa matkalla Vätsäriin" />
-    </div>
-    <div class="chapter-text">
-      <div class="chapter-label">01 — Pudotus erämaahan</div>
-      <h2 class="chapter-title">Vesitasolentokone jätti minut yksin.</h2>
-      <p>Vesitasolentokone laskeutui järvelle, ovet aukenivat ja minä hyppäsin ulos. Sitten se nousi takaisin taivaalle. Katson konetta kunnes se katosi puiden taakse — ja ymmärsin olevani yksin.</p>
-      <p>Mukana ei ollut karttaa eikä kompassia. Ei retkimuonaa, telttaa tai makuupussia. Vain rajattu määrä selviytymisvälineitä ja vuosien aikana opitut taidot. Tehtävä oli selkeä: löydä omin avuin takaisin ihmisten ilmoille.</p>
-    </div>
-  </section>
-
-  <!-- ===== FULL-BLEED 1 ===== -->
-  <figure class="full-bleed">
-    <img src={`${IMG}/EA_08_ilmakuva.jpg`} alt="Ilmakuva Vätsärin erämaasta — järviä ja metsää silmänkantamattomiin" />
-    <figcaption>Vätsäri — yksi Suomen laajimmista erämaa-alueista</figcaption>
-  </figure>
-
-  <!-- ===== LUKU 02 ===== -->
-  <section class="chapter-02 container-wide">
-    <div class="chapter-02-text">
-      <div class="chapter-label">02 — Ilman suuntaa</div>
-      <h2 class="chapter-title">Jokainen maastonmuoto oli tulkittava paikan päällä.</h2>
-      <p>Vätsäri on kivinen ja rikkonainen erämaa. Järvet, louhikot, suot ja tiheät metsät katkaisevat näkyvyyden ja pakottavat muuttamaan suunnitelmaa yhä uudelleen. Ilman karttaa jokainen maastonmuoto oli tulkittava paikan päällä.</p>
-      <p>Auringon, vesistöjen ja luonnonmerkkien perusteella piti päättää, mihin suuntaan jatkaa — tietämättä varmasti, veisikö valinta lähemmäs määränpäätä vai syvemmälle erämaahan. Suunnistus muuttui jatkuvaksi neuvotteluksi maaston kanssa.</p>
-    </div>
-    <div class="chapter-02-images">
-      <div class="ch02-img-main">
-        <img src={`${IMG}/EA_04_nuotio.jpg`} alt="Sakke nuotion äärellä lean-to-suojassa" />
-      </div>
-      <div class="ch02-img-sm">
-        <img src={`${IMG}/EA_05_puro.jpg`} alt="Veden hakeminen purosta" />
-      </div>
-      <div class="ch02-img-sm">
-        <img src={`${IMG}/EA_01_louhikko.jpg`} alt="Sakke Vätsärin louhikolla" />
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FULL-BLEED 2 ===== -->
-  <figure class="full-bleed">
-    <img src={`${IMG}/EA_09_maasto.jpg`} alt="Vätsärin louhikko ja räme pilvisessä säässä" />
-  </figure>
-
-  <!-- ===== LUKU 03 ===== -->
-  <section class="chapter-03 container-wide">
-    <div class="chapter-03-sticky">
-      <div class="chapter-label">03 — Luonnon ehdoilla</div>
-      <h2 class="chapter-title">Kyse ei ollut vain selviytymistaidoista.</h2>
-      <div class="stat-callout">
-        <div class="stat-item">
-          <span class="stat-num">50+</span>
-          <span class="stat-label">KM linnuntietä</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">0</span>
-          <span class="stat-label">ruokaa mukana</span>
-        </div>
-      </div>
-    </div>
-    <div class="chapter-03-body">
-      <p>Ruoka oli pyydettävä matkan aikana. Suoja yöksi oli rakennettava siitä, mitä ympäristö tarjosi. Jokainen päivä kulutti voimia, jokainen yö oli taistelu kylmyyttä vastaan.</p>
-      <p>Vaikeinta oli säilyttää toimintakyky ja tehdä järkeviä päätöksiä silloinkin, kun varmuutta oikeasta suunnasta ei ollut. Keho sopeutuu, mutta mieli vaatii jatkuvaa työtä — epäilys on vaarallisin este eteenpäin liikkumiselle.</p>
-      <blockquote class="pull-quote">Erämaa ei vastusta — se on vain välinpitämätön. Se ei halua sinua hengiltä eikä auta sinua selviytymään. Se on vain siellä, ja sinä olet siellä myös.</blockquote>
-      <div class="ch03-images">
-        <img src={`${IMG}/EA_02_mela.jpg`} alt="Sakke Vätsärin vesistöllä" />
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TELEVISIO ===== -->
-  <section class="film-section">
-    <div class="container-wide">
-      <div class="film-header">
-        <div>
-          <div class="chapter-label">Televisio — Eränkävijät · 11. kausi</div>
-          <h2 class="film-title">Tulossa Yle TV1:llä<br>ja Yle Areenassa.</h2>
-        </div>
-        <p class="film-sub">Sarja on voittanut neljä Kultaista Venlaa ja kerännyt yli 90 miljoonaa katselukertaa.</p>
-      </div>
-      <div class="film-embed-wrap">
-        <img src={`${IMG}/EA_04_nuotio.jpg`} alt="Eränkävijät — Erämaan armoilla" class="film-poster-dim" />
-        <div class="film-gradient"></div>
-        <div class="film-coming-label">
-          <span class="film-coming-channel">Yle TV1 · Yle Areena</span>
-          <span class="film-coming-time">Syksy 2026</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GALLERIA ===== -->
-  <section class="gallery-section container-wide">
-    <div class="section-header">
-      <span class="t-label">Galleria</span>
-      <span class="section-line"></span>
-      <span class="gallery-label">Vätsäri 2026</span>
-    </div>
-    <div class="gallery-grid">
-      <div class="gal-a"><img src={`${IMG}/EA_08_ilmakuva.jpg`} alt="Ilmakuva Vätsärin erämaasta Lapissa — järviä ja metsää silmänkantamattomiin" /></div>
-      <div class="gal-b"><img src={`${IMG}/EA_06_kavely.jpg`} alt="Sakke Raappana kävelee yksin Vätsärin erämaassa Lapissa" /></div>
-      <div class="gal-c"><img src={`${IMG}/EA_09_maasto.jpg`} alt="Vätsärin louhikkoa ja rämettä pilvisessä säässä" /></div>
-      <div class="gal-d"><img src={`${IMG}/EA_01_louhikko.jpg`} alt="Sakke Raappana Vätsärin louhikolla" /></div>
+  <!-- ===== TEASER ===== -->
+  <section class="teaser-section">
+    <div class="teaser-content">
+      <p>Olen yksi Eränkävijät-sarjan uusista päähenkilöistä. Syksyllä julkaistavalla kaudella nähdään vaatina selviytymisvaellus Vätsärin erämaassa — ilman telttaa, makuupussia, ruokaa, karttaa tai kompassia.</p>
+      <p>Koko retken mahdollisti <a class="ntrnz-link" href="https://ntrnz.com/erankavijat-sarja-palaa-lokakuussa-uudella-11-kaudellaan/" target="_blank" rel="noopener">Ntrnz</a>, Eränkävijät-sarjan tuotantoyhtiö.</p>
+      <p class="teaser-coming">Laajempi kuvaus seikkailusta tulossa pian!</p>
     </div>
   </section>
 
@@ -196,7 +52,6 @@ const IMG = '/kuvat/seikkailut/eramaan-armoilla/kuvat';
 </Base>
 
 <style>
-/* ===== LAYOUT ===== */
 .container-wide {
   max-width: var(--max-width);
   margin-inline: auto;
@@ -282,379 +137,49 @@ const IMG = '/kuvat/seikkailut/eramaan-armoilla/kuvat';
   max-width: 42ch;
 }
 
-.hero-scroll {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.24em;
-  color: var(--color-muted);
-}
-
-/* ===== FAKTAJUOVA ===== */
-.fact-strip {
-  border-bottom: 1px solid var(--color-border);
-}
-
-.fact-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.fact-cell {
-  padding: var(--space-8) var(--space-8);
-  border-right: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.fact-cell:nth-child(4n) { border-right: none; }
-.fact-cell:nth-last-child(-n+4) { border-bottom: none; }
-
-.fact-cell dt {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-glacier);
-  margin-bottom: var(--space-3);
-}
-
-.fact-cell dd {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
-  color: var(--color-text);
-  margin: 0;
-}
-
-/* ===== LEAD ===== */
-.lead-section {
-  max-width: 56rem;
+/* ===== TEASER ===== */
+.teaser-section {
+  max-width: 52rem;
   margin: 0 auto;
-  padding: var(--space-32) var(--space-10);
-  text-align: center;
+  padding: var(--space-32) var(--space-10) var(--space-24);
 }
 
-.lead-text {
+.teaser-content p {
   font-family: var(--font-body);
   font-weight: 300;
-  font-style: italic;
-  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
-  line-height: 1.45;
-  color: var(--color-text);
-  margin: 0;
-}
-
-/* ===== LUKU 01 ===== */
-.chapter {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
-  align-items: center;
-  padding-block: var(--space-10);
-}
-
-.chapter-image-left {
-  aspect-ratio: 4/5;
-  overflow: hidden;
-}
-
-.chapter-image-left img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.chapter-label {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-glacier);
-  margin-bottom: var(--space-4);
-}
-
-.chapter-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
-  line-height: 1.05;
-  letter-spacing: -0.015em;
-  margin: 0 0 var(--space-6);
-  color: var(--color-text);
-}
-
-.chapter-text p,
-.chapter-02-text p,
-.chapter-03-body p {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 1.2rem;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
   line-height: 1.65;
   color: var(--color-body);
-  margin: 0 0 var(--space-5);
+  margin: 0 0 var(--space-6);
 }
 
-/* ===== FULL-BLEED ===== */
-.full-bleed {
-  margin: var(--space-20) 0;
-  position: relative;
-}
-
-.full-bleed img {
-  width: 100%;
-  height: 78vh;
-  min-height: 460px;
-  object-fit: cover;
-}
-
-.full-bleed figcaption {
-  position: absolute;
-  bottom: var(--space-6);
-  left: var(--space-10);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.teaser-content strong {
   color: var(--color-text);
-  background: rgba(14,17,19,0.55);
-  backdrop-filter: blur(4px);
-  padding: var(--space-2) var(--space-4);
+  font-weight: 600;
 }
 
-/* ===== LUKU 02 ===== */
-.chapter-02 {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: var(--space-16);
-  align-items: start;
-  padding-block: var(--space-10);
-}
-
-.chapter-02-images {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: var(--space-3);
-  height: 600px;
-}
-
-.ch02-img-main {
-  grid-row: span 2;
-  overflow: hidden;
-}
-
-.ch02-img-main img,
-.ch02-img-sm img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.ch02-img-sm { overflow: hidden; }
-
-/* ===== LUKU 03 ===== */
-.chapter-03 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
-  align-items: start;
-  padding-block: var(--space-10);
-  overflow: clip;
-}
-
-.chapter-03-sticky {
-  position: sticky;
-  top: calc(var(--nav-height) + var(--space-8));
-}
-
-.stat-callout {
-  display: flex;
-  gap: var(--space-10);
-  padding-top: var(--space-6);
-  border-top: 1px solid var(--color-border);
-  margin-top: var(--space-6);
-}
-
-.stat-item { display: flex; flex-direction: column; }
-
-.stat-num {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  letter-spacing: -0.02em;
+.teaser-content a.ntrnz-link {
   color: var(--color-text);
-  line-height: 1;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--color-glacier);
+  text-underline-offset: 3px;
+  transition: color 0.2s;
 }
 
-.stat-label {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  margin-top: var(--space-2);
+.teaser-content a.ntrnz-link:hover {
+  color: var(--color-glacier);
 }
 
-.pull-quote {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-style: italic;
-  font-size: 1.35rem;
-  line-height: 1.55;
-  color: var(--color-text);
-  border-left: 2px solid var(--color-glacier);
-  padding-left: var(--space-6);
-  margin: var(--space-8) 0;
-}
-
-.ch03-images {
-  margin-top: var(--space-6);
-  max-width: 36rem;
-}
-
-.ch03-images img {
-  width: 100%;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-}
-
-/* ===== TELEVISIO ===== */
-.film-section {
-  margin-top: var(--space-32);
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-  padding-block: var(--space-20);
-}
-
-.film-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  margin-bottom: var(--space-10);
-}
-
-.film-title {
+.teaser-coming {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
-  line-height: 1.05;
-  letter-spacing: -0.015em;
-  color: var(--color-text);
-  margin: var(--space-3) 0 0;
-}
-
-.film-sub {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  max-width: 28rem;
-  color: var(--color-muted);
-  margin: 0;
-}
-
-.film-embed-wrap {
-  position: relative;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  background: #000;
-}
-
-.film-poster-dim {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.35;
-}
-
-.film-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(14,17,19,0.1), rgba(14,17,19,0.6));
-}
-
-.film-coming-label {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
-}
-
-.film-coming-channel {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-text);
-}
-
-.film-coming-time {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
   letter-spacing: -0.01em;
   color: var(--color-text);
-}
-
-/* ===== GALLERIA ===== */
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  margin-bottom: var(--space-10);
-}
-
-.section-line {
-  flex: 1;
-  height: 1px;
-  background: var(--color-border);
-}
-
-.gallery-label {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
-
-.gallery-section {
-  padding-bottom: var(--space-24);
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: 220px;
-  gap: var(--space-3);
-}
-
-.gal-a { grid-column: span 5; grid-row: span 2; overflow: hidden; }
-.gal-b { grid-column: span 7; overflow: hidden; }
-.gal-c { grid-column: span 4; overflow: hidden; }
-.gal-d { grid-column: span 3; overflow: hidden; }
-
-.gallery-grid img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s var(--ease-out);
-}
-
-.gallery-grid div:hover img {
-  transform: scale(1.04);
+  border-left: 3px solid var(--color-glacier);
+  padding-left: var(--space-6);
+  margin-top: var(--space-10) !important;
 }
 
 /* ===== SEURAAVA ===== */
@@ -691,6 +216,16 @@ const IMG = '/kuvat/seikkailut/eramaan-armoilla/kuvat';
   background: linear-gradient(90deg, rgba(14,17,19,0.85), rgba(14,17,19,0.35));
 }
 
+.chapter-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-glacier);
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
 .next-title {
   display: block;
   font-family: var(--font-display);
@@ -700,37 +235,5 @@ const IMG = '/kuvat/seikkailut/eramaan-armoilla/kuvat';
   color: var(--color-text);
   line-height: 1;
   margin-top: var(--space-4);
-}
-
-/* ===== RESPONSIIVISUUS ===== */
-@media (max-width: 900px) {
-  .fact-grid { grid-template-columns: repeat(2, 1fr); }
-  .fact-cell:nth-child(4n) { border-right: 1px solid var(--color-border); }
-  .fact-cell:nth-child(2n) { border-right: none; }
-  .fact-cell:nth-last-child(-n+4) { border-bottom: 1px solid var(--color-border); }
-  .fact-cell:nth-last-child(-n+2) { border-bottom: none; }
-
-  .chapter,
-  .chapter-02,
-  .chapter-03 { grid-template-columns: 1fr; }
-
-  .chapter-image-left { aspect-ratio: 16/9; }
-  .chapter-02-images { height: 400px; }
-  .chapter-03-sticky { position: static; }
-
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 180px;
-  }
-  .gal-a { grid-column: span 1; grid-row: span 1; }
-  .gal-b { grid-column: span 1; }
-  .gal-c { grid-column: span 1; }
-  .gal-d { grid-column: span 1; }
-}
-
-@media (max-width: 600px) {
-  .fact-grid { grid-template-columns: 1fr 1fr; }
-  .ch03-images { grid-template-columns: 1fr; }
-  .film-header { flex-direction: column; align-items: flex-start; }
 }
 </style>
