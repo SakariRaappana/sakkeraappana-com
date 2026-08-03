@@ -197,6 +197,13 @@ const phases = [
       <p class="reference-footnote t-body-sm">
         Yllä olevat luvut kertovat vasta valmistautumisvaiheesta. Elokuva — ja sen yleisö — on vasta tulossa.
       </p>
+      <blockquote class="testimonial">
+        <p class="testimonial-text t-body">"Arvostamme Saken tavassa toimia erityisesti aitoutta. Hän ei suosittele tuotteita kevyin perustein, vaan vasta silloin, kun ne ovat ansainneet paikkansa hänen varusteissaan ja seikkailuissaan. Sakke suhtautuu tekemiseensä tinkimättömästi ja testaa varusteet siellä, missä niiden suorituskyky todella punnitaan. Juuri tällainen yhteistyö on meille erittäin arvokasta."</p>
+        <footer class="testimonial-footer">
+          <span class="t-label testimonial-author">Henna Lauhasmaa</span>
+          <span class="t-label testimonial-company">Svala of Finland</span>
+        </footer>
+      </blockquote>
     </section>
 
     <!-- YHTEYDENOTTO -->
@@ -394,6 +401,33 @@ const phases = [
   margin-top: var(--space-6);
   color: var(--color-muted);
   max-width: 52rem;
+}
+
+.testimonial {
+  margin: var(--space-12) 0 0;
+  padding: var(--space-8);
+  border-left: 2px solid var(--color-glacier);
+  max-width: 52rem;
+}
+
+.testimonial-text {
+  font-style: italic;
+  color: var(--color-text);
+  margin: 0 0 var(--space-6);
+}
+
+.testimonial-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.testimonial-author {
+  color: var(--color-text);
+}
+
+.testimonial-company {
+  color: var(--color-muted);
 }
 
 /* Contact */
